@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --config src/config/webpack.dev.config.js --watch --mode development",
     "build": "webpack --config src/config/webpack.config.js --mode production",
     "start": "node src/server.js",
+    "linter": "./node_modules/.bin/eslint --fix src/components/*.jsx",
     "clean": "rm -rf src/build"
   },
   "repository": {
@@ -51,6 +52,7 @@
     "classnames": "^2.2.6",
     "express": "^4.16.3",
     "express-history-api-fallback": "^2.2.1",
+    "jquery": "^3.3.1",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-google-maps": "^9.4.5",

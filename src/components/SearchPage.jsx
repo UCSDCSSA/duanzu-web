@@ -14,6 +14,7 @@ import Header from './Header';
 import LeasingCard from './LeasingCard';
 import GoogleMapTest from './GoogleMapTest';
 import './styles/search-page.scss';
+import $ from 'jquery';
 
 class Tag extends React.Component {
   constructor(props) {

@@ -20,7 +20,7 @@ import ImageUploader from './ImageUploader';
 
 class Publish extends React.Component {
   handleClick() {
-    window.location.href = '/#/display';
+    window.location.href = '/display';
   }
 
   render() {

@@ -14,6 +14,7 @@ import {
   Col,
   Icon,
 } from 'react-materialize';
+import $ from 'jquery';
 import LeasingCard from './LeasingCard.js';
 
 // Import UI Components

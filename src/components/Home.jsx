@@ -11,6 +11,7 @@ import {
 import Header from './Header';
 import LeasingCard from '~/components/LeasingCard';
 import './styles/home.scss';
+import $ from 'jquery';
 
 class RowItem extends React.Component {
   render() {

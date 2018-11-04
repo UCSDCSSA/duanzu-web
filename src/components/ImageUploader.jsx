@@ -22,7 +22,7 @@ class ImageUploader extends React.Component {
   _handleSubmit(e) {
     e.preventDefault();
     // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file);
+    // console.log('handle uploading-', this.state.file);
   }
 
   _handleImageChange(e) {
@@ -82,7 +82,7 @@ class ImageUploader extends React.Component {
             type="submit"
             onClick={e => this._handleSubmit(e)}
           >
-Upload Image
+            Upload Image
           </button>
         </form>
       </div>

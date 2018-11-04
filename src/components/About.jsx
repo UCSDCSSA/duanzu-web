@@ -5,8 +5,8 @@
 // @flow
 import React from 'react';
 import Axios from 'axios';
+import $ from 'jquery';
 import Header from './Header';
-
 
 class DeveloperCard extends React.Component {
   componentDidMount() {
