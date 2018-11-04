@@ -13,7 +13,13 @@ class About extends React.Component<{}, AboutState> {
   constructor(props: {}, context: AboutState) {
     super(props, context);
     this.state = {
-      members: [],
+      members: [{
+        avatar: "https://liby.me/img/general/icon.jpg",
+        name: "李子阳"
+      }, {
+        avatar: "https://66.media.tumblr.com/tumblr_mdzufxZkrX1rsr4fw.png",
+        name: "遠坂凛"
+      }],
     };
   }
 
