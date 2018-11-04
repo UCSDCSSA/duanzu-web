@@ -13,7 +13,6 @@ import ChangePassword from '~/components/ChangePassword';
 import ViewLeasing from '~/components/ViewLeasing';
 import ChangeProfile from '~/components/ChangeProfile';
 import SearchPage from '~/components/SearchPage';
-import Display from '~/components/Display';
 import GoogleMapTest from '~/components/GoogleMapTest';
 import Sample from '~/components/PopUpSample';
 
@@ -25,7 +24,6 @@ export default class Router extends React.Component<{}> {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/display" component={Display} />
           <Route exact path="/publish" component={Publish} />
           <Route exact path="/leasing" component={ViewLeasing} />
           <Route exact path="/profile/edit" component={ChangeProfile} />
