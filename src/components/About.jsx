@@ -2,7 +2,7 @@
  * @author: Yiyang Yin
  * @date: 2017/11/12
  */
-// @flow
+
 import React from 'react';
 import Axios from 'axios';
 import $ from 'jquery';

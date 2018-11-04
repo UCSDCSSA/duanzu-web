@@ -4,17 +4,17 @@ import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from '~/components/Home';
-import Login from '~/components/Login.js';
-import NotFound from '~/components/NotFound.js';
-import Publish from '~/components//Publish.js';
-import ChangePassword from '~/components/ChangePassword.js';
-import ViewLeasing from '~/components/ViewLeasing.js';
-import ChangeProfile from '~/components/ChangeProfile.js';
-import About from '~/components/About.js';
-import SearchPage from '~/components/SearchPage.js';
-import Display from '~/components/Display.js';
-import GoogleMapTest from '~/components/GoogleMapTest.js';
-import Sample from '~/components/PopUpSample.js';
+import Login from '~/components/Login';
+import NotFound from '~/components/NotFound';
+import Publish from '~/components//Publish';
+import ChangePassword from '~/components/ChangePassword';
+import ViewLeasing from '~/components/ViewLeasing';
+import ChangeProfile from '~/components/ChangeProfile';
+import About from '~/components/About';
+import SearchPage from '~/components/SearchPage';
+import Display from '~/components/Display';
+import GoogleMapTest from '~/components/GoogleMapTest';
+import Sample from '~/components/PopUpSample';
 
 export default class Router extends React.Component<{}> {
   render() {

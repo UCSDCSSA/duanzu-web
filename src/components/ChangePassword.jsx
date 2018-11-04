@@ -1,4 +1,3 @@
-// @flow
 
 /**
  * @author: Tianyang Lu Xuran Liu

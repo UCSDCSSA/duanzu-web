@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --config src/config/webpack.dev.config.js --watch --mode development",
     "build": "webpack --config src/config/webpack.config.js --mode production",
     "start": "node src/server.js",
+    "flow": "./node_modules/.bin/flow",
     "linter": "./node_modules/.bin/eslint --fix src/components/*.jsx",
     "clean": "rm -rf src/build"
   },
@@ -37,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "flow": "^0.2.3",
+    "flow-bin": "^0.85.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
