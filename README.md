@@ -32,8 +32,8 @@ We have [nodemon](https://nodemon.io) and
 need to refresh the webpage nor restart the dev server. You can just write your codes in your
 editor and see the changes happen on the website.
 
-Note that, if your code involves dealing with back-end requests, you should also run a back-end
-server separately.
+Note that, if your code involves dealing with back-end requests, you should also run a
+[back-end server](https://github.com/UCSDCSSA/duanzu-backend) separately.
 
 ## Deployment
 
@@ -43,14 +43,14 @@ To deploy, you need to first build the code:
 $ npm run build
 ```
 
-This will generate a `src/build/` directory consists of the built css and js files. After that, you
-can type
+This will generate a `src/build/` directory consists of the built `css` and `js` files. After that,
+you can type
 
 ```
 $ npm run server
 ```
 
-To start the real express server which we will be using on any server.
+To start the real [express](https://expressjs.com/) server which we will be using on any server.
 
 ## Contributing
 
