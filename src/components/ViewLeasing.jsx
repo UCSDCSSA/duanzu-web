@@ -257,9 +257,9 @@ class ViewLeasing extends React.Component {
                     <Col s={5}>
                       <Row>张三</Row>
                       <a
-                  className="waves-effect waves-light btn-large red"
-                  style={{ marginBottom: '-240px', marginLeft: '-15px', paddingBottom: '100px' }}
-                  onClick={() => {
+                        className="waves-effect waves-light btn-large red"
+                        style={{ marginBottom: '-240px', marginLeft: '-15px', paddingBottom: '100px' }}
+                        onClick={() => {
                           this.setState((prev) => {
                             const next = {
                               like: !prev.like,
@@ -267,21 +267,21 @@ class ViewLeasing extends React.Component {
                             return next;
                           });
                         }}
-                >
-                  { buttonDisplay(this.state.like) }
+                      >
+                        { buttonDisplay(this.state.like) }
                                 收藏房源
-                </a>
+                      </a>
                     </Col>
                     <Col s={7}>
                       <Row>
                                 8581234567
-                </Row>
+                      </Row>
                       <Row>
                                 微信名称
-                </Row>
+                      </Row>
                       <Row>
                                 abcd@ucsd.edu
-                </Row>
+                      </Row>
                     </Col>
                   </Row>
                 </Card>

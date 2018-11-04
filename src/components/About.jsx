@@ -4,8 +4,6 @@
  */
 // @flow
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Row, Col } from 'react-materialize';
 import Axios from 'axios';
 import Header from './Header';
 

@@ -100,28 +100,30 @@ class Login extends React.Component {
                   <Col style={{ width: '50%' }}>
                     <center>
                       <a
-                            style={buttonStyle} onClick={() => {
-                                this.setState({
-                                  login: true,
-                                });
-                              }}
-                          >
-                            <h5>登录</h5>
-                          </a>
+                        style={buttonStyle}
+                        onClick={() => {
+                          this.setState({
+                            login: true,
+                          });
+                        }}
+                      >
+                        <h5>登录</h5>
+                      </a>
                     </center>
                   </Col>
 
                   <Col style={{ width: '50%' }}>
                     <center>
                       <a
-                            style={buttonStyle} onClick={() => {
-                                this.setState({
-                                  login: false,
-                                });
-                              }}
-                          >
-                            <h5>注册</h5>
-                          </a>
+                        style={buttonStyle}
+                        onClick={() => {
+                          this.setState({
+                            login: false,
+                          });
+                        }}
+                      >
+                        <h5>注册</h5>
+                      </a>
                     </center>
                   </Col>
                 </Row>

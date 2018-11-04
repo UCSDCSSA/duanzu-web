@@ -227,8 +227,8 @@ const ChangeProfile = () => {
                   </Col>
                   <Col s={12} m={7}>
                     <div style={flexRight}>
-                        {allProfileElement}
-                      </div>
+                      {allProfileElement}
+                    </div>
                   </Col>
                 </Row>
               </Card>
