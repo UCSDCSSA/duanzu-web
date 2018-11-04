@@ -2,7 +2,6 @@
  * The server file to serve a single page node/express application
  */
 
-const path = require('path');
 const express = require('express');
 const fallback = require('express-history-api-fallback');
 const config = require('./config/react.config');
@@ -22,6 +21,6 @@ app.use(express.static(publicRoot));
 app.use(fallback('index.html', { root: buildRoot }));
 
 // Listen to the port and start server
-app.listen(config.port, function () {
+app.listen(config.port, () => {
   console.log(`Server listening to port ${config.port}`);
 });

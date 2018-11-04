@@ -1,14 +1,14 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.js'
+    main: './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -16,42 +16,27 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              '@babel/preset-react',
-              '@babel/preset-env'
-            ],
-            "plugins": [
-              "transform-flow-strip-types",
-              [
-                "babel-plugin-root-import",
-                {
-                  "rootPathSuffix": "src/",
-                  "rootPathPrefix": "~"
-                }
-              ]
-            ]
-          }
-        }
+          loader: 'babel-loader',
+          options: require('../../.babelrc'),
+        },
       },
       {
         test: /\.scss$/,
-        use:  [
+        use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'main.css'
+      filename: 'main.css',
     }),
     new HtmlWebpackPlugin({
-      template: './src/static/index.html'
-    })
-  ]
+      template: './src/static/index.html',
+    }),
+  ],
 };

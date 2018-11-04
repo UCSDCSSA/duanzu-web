@@ -5,6 +5,6 @@ module.exports = merge(config, {
   devServer: {
     contentBase: 'src/public',
     historyApiFallback: true,
-    port: 9000
-  }
+    port: 9000,
+  },
 });

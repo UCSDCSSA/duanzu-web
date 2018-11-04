@@ -21,18 +21,18 @@ export default class Router extends React.Component<{}> {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/about' component={About}/>
-          <Route exact path='/display' component={Display}/>
-          <Route exact path='/publish' component={Publish}/>
-          <Route exact path='/leasing' component={ViewLeasing}/>
-          <Route exact path='/profile/edit' component={ChangeProfile}/>
-          <Route exact path='/profile/change_password' component={ChangePassword}/>
-          <Route exact path='/searchpage' component={SearchPage}/>
-          <Route exact path='/map' component={GoogleMapTest}/>
-          <Route exact path='/sample' component={Sample}/>
-          <Route path='*' component={NotFound}/>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/display" component={Display} />
+          <Route exact path="/publish" component={Publish} />
+          <Route exact path="/leasing" component={ViewLeasing} />
+          <Route exact path="/profile/edit" component={ChangeProfile} />
+          <Route exact path="/profile/change_password" component={ChangePassword} />
+          <Route exact path="/searchpage" component={SearchPage} />
+          <Route exact path="/map" component={GoogleMapTest} />
+          <Route exact path="/sample" component={Sample} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
     );
