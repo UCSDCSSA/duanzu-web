@@ -11,7 +11,6 @@ import {
 import Header from './Header';
 import LeasingCard from '~/components/LeasingCard';
 import './styles/home.scss';
-import $ from 'jquery';
 
 class RowItem extends React.Component {
   render() {
@@ -117,21 +116,21 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    $('.carousel').carousel({
-      fullWidth: true,
-      numVisible: 1,
-      duration: 250,
-    });
-
-    if (this.state != null && !this.state.interval) {
-      const i = setInterval(() => {
-        $('.carousel').carousel('next');
-      }, 4500);
-
-      this.setState({
-        interval: i,
-      });
-    }
+    // $('.carousel').carousel({
+    //   fullWidth: true,
+    //   numVisible: 1,
+    //   duration: 250,
+    // });
+    //
+    // if (this.state != null && !this.state.interval) {
+    //   const i = setInterval(() => {
+    //     $('.carousel').carousel('next');
+    //   }, 4500);
+    //
+    //   this.setState({
+    //     interval: i,
+    //   });
+    // }
   }
 }
 

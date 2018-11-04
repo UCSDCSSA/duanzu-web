@@ -14,7 +14,6 @@ import {
   Col,
   Icon,
 } from 'react-materialize';
-import $ from 'jquery';
 import LeasingCard from './LeasingCard';
 
 // Import UI Components
@@ -74,24 +73,24 @@ class Display extends React.Component {
   }
 
   componentDidMount() {
-    $('#startDate').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Ok',
-      closeOnSelect: false, // Close upon selecting a date,
-      min: new Date(),
-    });
-    $('#endDate').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Ok',
-      closeOnSelect: false, // Close upon selecting a date,
-      min: 1,
-    });
+    // $('#startDate').pickadate({
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year,
+    //   today: 'Today',
+    //   clear: 'Clear',
+    //   close: 'Ok',
+    //   closeOnSelect: false, // Close upon selecting a date,
+    //   min: new Date(),
+    // });
+    // $('#endDate').pickadate({
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year,
+    //   today: 'Today',
+    //   clear: 'Clear',
+    //   close: 'Ok',
+    //   closeOnSelect: false, // Close upon selecting a date,
+    //   min: 1,
+    // });
   }
 }
 

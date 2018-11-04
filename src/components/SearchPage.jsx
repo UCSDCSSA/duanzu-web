@@ -14,7 +14,7 @@ import Header from './Header';
 import LeasingCard from './LeasingCard';
 import GoogleMapTest from './GoogleMapTest';
 import './styles/search-page.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 class Tag extends React.Component {
   constructor(props) {
@@ -250,25 +250,25 @@ class SearchPage extends React.Component {
   }
 
   componentDidMount() {
-    $('#startDate').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Ok',
-      closeOnSelect: false, // Close upon selecting a date,
-      min: new Date(),
-    });
-
-    $('#endDate').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Ok',
-      closeOnSelect: false, // Close upon selecting a date,
-      min: 1,
-    });
+    // $('#startDate').pickadate({
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year,
+    //   today: 'Today',
+    //   clear: 'Clear',
+    //   close: 'Ok',
+    //   closeOnSelect: false, // Close upon selecting a date,
+    //   min: new Date(),
+    // });
+    //
+    // $('#endDate').pickadate({
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year,
+    //   today: 'Today',
+    //   clear: 'Clear',
+    //   close: 'Ok',
+    //   closeOnSelect: false, // Close upon selecting a date,
+    //   min: 1,
+    // });
   }
 }
 

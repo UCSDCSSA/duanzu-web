@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
 
 import {
   Card,
@@ -86,10 +85,10 @@ class HouseCard extends React.Component {
   }
 
   componentDidMount() {
-    $('.houseImage').each(function () {
-      const width = $(this).width();
-      $(this).height(width);
-    });
+    // $('.houseImage').each(function () {
+    //   const width = $(this).width();
+    //   $(this).height(width);
+    // });
   }
 }
 
