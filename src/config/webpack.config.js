@@ -17,22 +17,22 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              "react",
-              "env"
-            ],
-            plugins: [
-              "transform-flow-strip-types",
-              [
-                "babel-plugin-root-import",
-                {
-                  "rootPathSuffix": "src/",
-                  "rootPathPrefix": "~"
-                }
-              ],
-            ],
-          },
+          // options: {
+          //   presets: [
+          //     "@babel/preset-react",
+          //     "@babel/preset-env",
+          //   ],
+          //   plugins: [
+          //     "transform-flow-strip-types",
+          //     [
+          //       "babel-plugin-root-import",
+          //       {
+          //         "rootPathSuffix": "src/",
+          //         "rootPathPrefix": "~"
+          //       }
+          //     ],
+          //   ],
+          // },
         },
       },
       {
@@ -54,4 +54,7 @@ module.exports = {
       template: './src/static/index.html',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  }
 };

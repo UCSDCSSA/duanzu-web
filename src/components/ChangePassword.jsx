@@ -1,3 +1,4 @@
+// @flow
 
 /**
  * @author: Tianyang Lu Xuran Liu
@@ -14,8 +15,7 @@ import {
 import Header from './Header';
 import LeasingCard from './LeasingCard';
 
-
-class ChangePassword extends React.Component {
+export default class ChangePassword extends React.Component<{}> {
   render() {
     return (
       <div>
@@ -40,5 +40,3 @@ class ChangePassword extends React.Component {
     );
   }
 }
-
-export default ChangePassword;

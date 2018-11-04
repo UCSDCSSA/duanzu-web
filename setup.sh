@@ -1,5 +1,5 @@
 # Install flow typing tools
-npm install -g flow-bin
+sudo npm install -g flow-bin
 
 # Install scss-lint
-gem install scss_lint
+sudo gem install scss_lint

@@ -8,7 +8,7 @@ import About from '~/components/about/About';
 import Home from '~/components/Home';
 import Login from '~/components/Login';
 import NotFound from '~/components/NotFound';
-import Publish from '~/components//Publish';
+import Publish from '~/components/Publish';
 import ChangePassword from '~/components/ChangePassword';
 import ViewLeasing from '~/components/ViewLeasing';
 import ChangeProfile from '~/components/ChangeProfile';
