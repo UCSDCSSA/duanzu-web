@@ -1,0 +1,15 @@
+.developer {
+  height: 150px;
+  width: 150px;
+  margin-top: 20px;
+  
+  .developer-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+  
+  .developer-name {
+    padding: 0 10px;
+  }
+}

@@ -8,7 +8,8 @@
     "build": "webpack --config src/config/webpack.config.js --mode production",
     "start": "node src/server.js",
     "flow": "./node_modules/.bin/flow",
-    "linter": "./node_modules/.bin/eslint --fix src/components/*.jsx",
+    "es-linter": "./node_modules/.bin/eslint --fix src/components/*.jsx",
+    "scss-linter": "scss-lint src/**/*.scss",
     "clean": "rm -rf src/build"
   },
   "repository": {
@@ -34,6 +35,7 @@
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
