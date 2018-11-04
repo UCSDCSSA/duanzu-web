@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.scss';
 
 // Include the main router
-import Router from './routes/Router';
+import Router from './routes/Router.jsx';
 
 // $FlowFixMe Render the router
-ReactDOM.render(<Router />, document.getElementById('root'));
+ReactDOM.render(React.createElement(Router), document.getElementById('root'));

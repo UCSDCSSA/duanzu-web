@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import About from '~/components/about/About';
+
 import Home from '~/components/Home';
 import Login from '~/components/Login';
 import NotFound from '~/components/NotFound';
@@ -10,7 +12,6 @@ import Publish from '~/components//Publish';
 import ChangePassword from '~/components/ChangePassword';
 import ViewLeasing from '~/components/ViewLeasing';
 import ChangeProfile from '~/components/ChangeProfile';
-import About from '~/components/About';
 import SearchPage from '~/components/SearchPage';
 import Display from '~/components/Display';
 import GoogleMapTest from '~/components/GoogleMapTest';

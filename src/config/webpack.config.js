@@ -13,11 +13,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: require('../../.babelrc'),
+          options: {
+            presets: [
+              "react",
+              "env"
+            ],
+            plugins: [
+              "transform-flow-strip-types",
+              [
+                "babel-plugin-root-import",
+                {
+                  "rootPathSuffix": "src/",
+                  "rootPathPrefix": "~"
+                }
+              ],
+            ],
+          },
         },
       },
       {
