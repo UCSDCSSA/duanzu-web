@@ -10,7 +10,7 @@
     "flow": "./node_modules/.bin/flow",
     "es-linter": "./node_modules/.bin/eslint --fix src/components/*.jsx",
     "scss-linter": "scss-lint src/**/*.scss",
-    "linter": "npm run es-linter && npm run scss-linter",
+    "linter": "npm run es-linter && npm run flow && npm run scss-linter",
     "clean": "rm -rf src/build"
   },
   "repository": {
