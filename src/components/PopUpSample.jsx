@@ -4,10 +4,6 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Row, Col } from 'react-materialize';
-import Axios from 'axios';
-import Header from './Header';
 
 class PopUpSample extends React.Component {
   constructor() {
@@ -19,16 +15,17 @@ class PopUpSample extends React.Component {
   }
 
   toggle() {
-    if (this.state.opened) {
-      console.log('close');
+    const { opened } = this.state;
+
+    if (opened) {
       this.setState({ opened: false });
     } else {
-      console.log('open');
       this.setState({ opened: true });
     }
   }
 
   render() {
+    const { opened } = this.state;
     const maskStyle = {
       position: 'fixed',
       width: '100%',
@@ -37,7 +34,7 @@ class PopUpSample extends React.Component {
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       alignItems: 'center',
       justifyContent: 'center',
-      display: this.state.opened ? 'flex' : 'none',
+      display: opened ? 'flex' : 'none',
     };
 
     const loginStyle = {
@@ -48,13 +45,13 @@ class PopUpSample extends React.Component {
 
     return (
       <div>
-        <button onClick={this.toggle}>Toggle Popup</button>
-        <div style={maskStyle} onClick={this.toggle}>
-          <div style={loginStyle} onClick={e => e.stopPropagation()}>
+        <button type="button" onClick={this.toggle}>Toggle Popup</button>
+        <div style={maskStyle} onClick={this.toggle} role="presentation">
+          <div style={loginStyle} onClick={e => e.stopPropagation()} role="presentation">
             <center>
               <div style={{ display: 'flex' }}>
                 <h5>Login</h5>
-                <span onClick={this.toggle}>x</span>
+                <span onClick={this.toggle} role="presentation">x</span>
               </div>
             </center>
           </div>

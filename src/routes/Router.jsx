@@ -15,7 +15,6 @@ import ChangeProfile from '~/components/ChangeProfile';
 import SearchPage from '~/components/SearchPage';
 import Display from '~/components/Display';
 import GoogleMapTest from '~/components/GoogleMapTest';
-import Sample from '~/components/PopUpSample';
 
 export default class Router extends React.Component<{}> {
   render() {
@@ -32,7 +31,6 @@ export default class Router extends React.Component<{}> {
           <Route exact path="/profile/change_password" component={ChangePassword} />
           <Route exact path="/searchpage" component={SearchPage} />
           <Route exact path="/map" component={GoogleMapTest} />
-          <Route exact path="/sample" component={Sample} />
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
