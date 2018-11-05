@@ -1,8 +1,9 @@
+// @flow
+
 import React from 'react';
 
-import { Link } from 'react-router-dom';
 import {
-  Navbar, NavItem, Card, Row, Col, Input, Button,
+  Card, Row, Col, Input, Button,
 } from 'react-materialize';
 // import Login from './Login';
 
@@ -16,7 +17,8 @@ class Header extends React.Component {
   }
 
   toggle() {
-    if (this.state.opened) {
+    const { opened } = this.state;
+    if (opened) {
       console.log('close');
       this.setState({ opened: false });
     } else {
@@ -25,32 +27,33 @@ class Header extends React.Component {
     }
   }
 
-  render() {
-    function loginDisplay(login) {
-      if (!login) {
-        return (
-          <div>
-            <Input s={12} label="用户名" />
-            <Input s={12} type="email" label="邮箱" />
-            <Input s={12} type="password" label="密码" />
-            <Input s={12} type="password" label="确认密码" />
-            <center>
-              <Button waves="light" s={12}>注册账号</Button>
-            </center>
-          </div>
-        );
-      }
+  loginDisplay() {
+    const { login } = this.state;
+    if (login) {
       return (
         <div>
-          <Input s={12} label="用户名/邮箱" />
+          <Input s={12} label="用户名" />
+          <Input s={12} type="email" label="邮箱" />
           <Input s={12} type="password" label="密码" />
+          <Input s={12} type="password" label="确认密码" />
           <center>
-            <Button waves="light" s={12}>登录</Button>
+            <Button waves="light" s={12}>注册账号</Button>
           </center>
         </div>
       );
     }
+    return (
+      <div>
+        <Input s={12} label="用户名/邮箱" />
+        <Input s={12} type="password" label="密码" />
+        <center>
+          <Button waves="light" s={12}>登录</Button>
+        </center>
+      </div>
+    );
+  }
 
+  render() {
     const navStyle = {
       width: '100%',
       height: '60px',
@@ -86,6 +89,8 @@ class Header extends React.Component {
       backgroundColor: 'white',
     };
 
+    const { opened } = this.state;
+
     const maskStyle = {
       position: 'fixed',
       width: '100%',
@@ -95,7 +100,7 @@ class Header extends React.Component {
       backgroundColor: 'rgba(0,0,0,0.5)',
       alignItems: 'center',
       justifyContent: 'center',
-      display: this.state.opened ? 'flex' : 'none',
+      display: opened ? 'flex' : 'none',
       zIndex: '1',
     };
 
@@ -106,34 +111,55 @@ class Header extends React.Component {
             <a style={navRightItemStyle} href="/">UCSD CSSA 短租平台</a>
           </div>
           <div style={navRightStyle}>
-            <a style={navRightItemStyle} onClick={() => this.toggle()}>登陆</a>
+            <Button
+              style={navRightItemStyle}
+              onClick={() => this.toggle()}
+              onKeyDown={() => this.toggle()}
+            >
+登陆
+            </Button>
             <a style={navRightItemStyle} href="/searchpage">搜索房源</a>
             <a style={navRightItemStyle} href="/publish">发布房源</a>
           </div>
         </nav>
-        <div style={maskStyle} onClick={() => this.toggle()}>
-          <div style={loginStyle} onClick={e => e.stopPropagation()}>
+        <div
+          style={maskStyle}
+          onClick={() => this.toggle()}
+          onKeyDown={() => this.toggle()}
+          role="presentation"
+        >
+          <div
+            style={loginStyle}
+            onClick={e => e.stopPropagation()}
+            onKeyDown={e => e.stopPropagation()}
+            role="presentation"
+          >
             <center>
               <Card>
                 <Row>
                   <Col style={{ width: '50%' }}>
                     <center>
-                      <a
+                      <Button
                         style={buttonStyle}
                         onClick={() => {
                           this.setState({
                             login: true,
                           });
                         }}
+                        onKeyDown={() => {
+                          this.setState({
+                            login: true,
+                          });
+                        }}
                       >
                         <h5>登录</h5>
-                      </a>
+                      </Button>
                     </center>
                   </Col>
 
                   <Col style={{ width: '50%' }}>
                     <center>
-                      <a
+                      <Button
                         style={buttonStyle}
                         onClick={() => {
                           this.setState({
@@ -142,12 +168,12 @@ class Header extends React.Component {
                         }}
                       >
                         <h5>注册</h5>
-                      </a>
+                      </Button>
                     </center>
                   </Col>
                 </Row>
                 <Row>
-                  { loginDisplay(this.state.login) }
+                  { this.loginDisplay() }
                 </Row>
               </Card>
             </center>
