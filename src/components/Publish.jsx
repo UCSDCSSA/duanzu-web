@@ -9,7 +9,6 @@ import Sticky from 'react-sticky-el';
 // Import UI Components
 import {
   Input,
-  Button,
   Card,
   Row,
   Col,
@@ -32,11 +31,6 @@ class Publish extends React.Component {
       width: '250px',
     };
 
-    const photoButton = {
-      paddingTop: '50px',
-      paddingBottom: '100px',
-      borderRadius: '0',
-    };
 
 
     return (<div>
@@ -231,7 +225,7 @@ class Publish extends React.Component {
 
         </Row>
       </div>
-    </div>
+            </div>
 
     // <a href='/#/leasing/view'> change </a>
 
