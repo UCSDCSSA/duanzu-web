@@ -34,7 +34,7 @@
     "empty": "^0.10.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
