@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react';
+import './styles/header.scss';
 
 import {
   Card, Row, Col, Input, Button,
 } from 'react-materialize';
-// import Login from './Login';
 
 class Header extends React.Component {
   constructor(props) {
@@ -13,6 +13,22 @@ class Header extends React.Component {
     this.state = {
       login: true,
       opened: false,
+    };
+  }
+
+  getStyle() {
+    const { opened } = this.state;
+    return {
+      position: 'fixed',
+      width: '100%',
+      height: '100%',
+      left: '0',
+      top: '0',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      alignItems: 'center',
+      justifyContent: 'center',
+      display: opened ? 'flex' : 'none',
+      zIndex: '1',
     };
   }
 
@@ -53,83 +69,40 @@ class Header extends React.Component {
     );
   }
 
+
   render() {
-    const navStyle = {
-      width: '100%',
-      height: '60px',
-      backgroundColor: 'rgba(186, 0, 0, 1)',
-      display: 'flex',
-      zIndex: '1000000',
-      boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
-    };
-
-    const navLeftStyle = {
-      display: 'flex',
-    };
-
-    const navRightStyle = {
-      flexGrow: '1000000',
-      flexFlow: 'row-reverse',
-      display: 'flex',
-    };
-
-    const navRightItemStyle = {
-      lineHeight: '60px',
-      padding: '0 15px',
-    };
-
-    const buttonStyle = {
-      color: 'black',
-      cursor: 'pointer',
-    };
-
-    const loginStyle = {
-      width: '50%',
-      height: '60%',
-      backgroundColor: 'white',
-    };
-
-    const { opened } = this.state;
-
-    const maskStyle = {
-      position: 'fixed',
-      width: '100%',
-      height: '100%',
-      left: '0',
-      top: '0',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: opened ? 'flex' : 'none',
-      zIndex: '1',
-    };
-
     return (
-      <div>
-        <nav style={navStyle}>
-          <div style={navLeftStyle}>
-            <a style={navRightItemStyle} href="/">UCSD CSSA 短租平台</a>
+      <div className="header">
+        <nav className="nav">
+          <div className="navLeft">
+            <a
+              className="navRightItem"
+              href="/"
+            >
+            UCSD CSSA 短租平台
+            </a>
           </div>
-          <div style={navRightStyle}>
+          <div className="navRight">
             <Button
-              style={navRightItemStyle}
+              className="navRightItem"
               onClick={() => this.toggle()}
               onKeyDown={() => this.toggle()}
             >
-登陆
+            登陆
             </Button>
-            <a style={navRightItemStyle} href="/searchpage">搜索房源</a>
-            <a style={navRightItemStyle} href="/publish">发布房源</a>
+            <a className="navRightItem" href="/searchpage">搜索房源</a>
+            <a className="navRightItem" href="/publish">发布房源</a>
           </div>
         </nav>
         <div
-          style={maskStyle}
+          className="mask"
+          style={this.getStyle()}
           onClick={() => this.toggle()}
           onKeyDown={() => this.toggle()}
           role="presentation"
         >
           <div
-            style={loginStyle}
+            className="login"
             onClick={e => e.stopPropagation()}
             onKeyDown={e => e.stopPropagation()}
             role="presentation"
@@ -140,7 +113,7 @@ class Header extends React.Component {
                   <Col style={{ width: '50%' }}>
                     <center>
                       <Button
-                        style={buttonStyle}
+                        className="button"
                         onClick={() => {
                           this.setState({
                             login: true,
@@ -160,7 +133,7 @@ class Header extends React.Component {
                   <Col style={{ width: '50%' }}>
                     <center>
                       <Button
-                        style={buttonStyle}
+                        className="button"
                         onClick={() => {
                           this.setState({
                             login: false,
