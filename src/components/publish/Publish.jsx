@@ -1,3 +1,5 @@
+//@flow
+
 /**
  * @author: Liby Lee
  * @date: 2017/11/12
@@ -14,10 +16,11 @@ import {
   Col,
   Icon,
 } from 'react-materialize';
-import Header from './Header';
+import Header from '../Header';
 import ImageUploader from './ImageUploader';
+import Amenities from './Amenities';
 
-class Publish extends React.Component {
+class Publish extends React.Component<{}> {
   handleClick() {
     window.location.href = '/display';
   }
@@ -30,7 +33,6 @@ class Publish extends React.Component {
     const inputLine = {
       width: '250px',
     };
-
 
 
     return (<div>
@@ -125,49 +127,7 @@ class Publish extends React.Component {
                   <label htmlFor="icon_prefix2">注意事项</label>
                 </div>
               </Row>
-              <div style={{ marginLeft: '10px' }}>
-                <Row>
-                  <i className="small material-icons" style={{ float: 'left', marginRight: '15px' }}>event_available</i>
-                  <h5>可用设施（室内&周边）</h5>
-                </Row>
-                <div style={{ marginLeft: '20px' }}>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                </div>
-              </div>
+              <Amenities/>
               <br />
               {/** <div style={{marginLeft: '20px'}}>
                                 <Row>
@@ -225,7 +185,7 @@ class Publish extends React.Component {
 
         </Row>
       </div>
-            </div>
+    </div>
 
     // <a href='/#/leasing/view'> change </a>
 
