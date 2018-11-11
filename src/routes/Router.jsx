@@ -11,7 +11,7 @@ import NotFound from '~/components/NotFound';
 import Publish from '~/components/Publish';
 import ChangePassword from '~/components/ChangePassword';
 import ViewLeasing from '~/components/ViewLeasing';
-import ChangeProfile from '~/components/ChangeProfile';
+import Profile from '~/components/profile/Profile';
 import SearchPage from '~/components/SearchPage';
 import GoogleMapTest from '~/components/GoogleMapTest';
 
@@ -25,7 +25,7 @@ export default class Router extends React.Component<{}> {
           <Route exact path="/about" component={About} />
           <Route exact path="/publish" component={Publish} />
           <Route exact path="/leasing" component={ViewLeasing} />
-          <Route exact path="/profile/edit" component={ChangeProfile} />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/profile/change_password" component={ChangePassword} />
           <Route exact path="/searchpage" component={SearchPage} />
           <Route exact path="/map" component={GoogleMapTest} />
