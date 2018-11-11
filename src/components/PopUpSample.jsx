@@ -17,7 +17,7 @@ class PopUpSample extends React.Component {
   toggle() {
     const { opened } = this.state;
 
-    this.setState({opened: !opened});
+    this.setState({ opened: !opened });
   }
 
   render() {
