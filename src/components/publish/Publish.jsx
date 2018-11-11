@@ -1,4 +1,4 @@
-//@flow
+// @flow
 
 /**
  * @author: Liby Lee
@@ -75,10 +75,10 @@ class Publish extends React.Component<{}> {
                 </h4>
               </Row>
               <Row>
-                <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker" onClose={function (e, value) {}}>
+                <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
                   <Icon>date_range</Icon>
                 </Input>
-                <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker" onChange={function (e, value) {}}>
+                <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
                   <Icon>date_range</Icon>
                 </Input>
               </Row>
