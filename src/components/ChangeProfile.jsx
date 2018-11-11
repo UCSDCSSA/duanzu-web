@@ -32,7 +32,7 @@ class InfoCard extends React.Component {
             <Col s={4}>
               <center>
                 <h7>
-                  <Icon small left>{this.props.icon}</Icon>
+                  <Icon small left> {this.props.icon} </Icon>
                   {this.props.infoName}
                 </h7>
               </center>
@@ -63,12 +63,12 @@ class HouseCard extends React.Component {
 
     // TODO need info from data base
     return (
+
       <div>
         <Col s={3}>
           <Card
             className="houseImage"
-            header={<CardTitle image={this.props.houseImage} />}
-          >
+            header={<CardTitle image={this.props.houseImage} />}>
             <Row style={rowStyle}>
               <center>
                 <h5>
@@ -210,7 +210,7 @@ const ChangeProfile = () => {
       <Header />
       <div style={backgroundStyle}>
         <div className="container">
-          <h5 style={{ 'margin-bottom': 60 }}>
+          <h5  style={{ 'margin-bottom': 60 }}>
             {' '}
 欢迎回来,
             <span style={{ fontSize: '40px' }}>
