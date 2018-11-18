@@ -1,4 +1,4 @@
-// @flow
+//@flow
 
 import React from 'react';
 import './styles/header.scss';
@@ -7,9 +7,14 @@ import {
   Card, Row, Col, Input, Button,
 } from 'react-materialize';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
+type HeaderState = {
+  login: boolean,
+  opened: boolean
+};
+
+class Header extends React.Component<{},HeaderState> {
+  constructor(props:{},context:HeaderState) {
+    super(props,context);
     this.state = {
       login: true,
       opened: false,

@@ -12,10 +12,10 @@ import React from 'react';
 import {
   Input, Button, Card, Row, Col,
 } from 'react-materialize';
-import Header from './Header.jsx';
+import Header from './header/Header';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class ChangePassword extends React.Component {
+class ChangePassword extends React.Component<{}> {
   render() {
     return (
       <div>
