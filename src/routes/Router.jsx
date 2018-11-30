@@ -10,7 +10,7 @@ import Login from '~/components/Login';
 import NotFound from '~/components/NotFound';
 import Publish from '~/components/Publish';
 import ChangePassword from '~/components/ChangePassword';
-import ViewLeasing from '~/components/ViewLeasing';
+import ViewLeasing from '~/components/ViewLeasing/ViewLeasing';
 import Profile from '~/components/profile/Profile';
 import SearchPage from '~/components/SearchPage';
 import GoogleMapTest from '~/components/GoogleMapTest';

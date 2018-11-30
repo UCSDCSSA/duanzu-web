@@ -2,20 +2,18 @@
  * @author: Yuhan Wang, Zixin Shen
  * @date: 2017/11/12
  */
-
 // Import react related components
 import React from 'react';
-
 // Import UI Components
 import {
   Input, Button, Card, Row, Col,
 } from 'react-materialize';
 import scrollToComponent from 'react-scroll-to-component';
 import Sticky from 'react-sticky-el';
-import Header from './Header';
-
+import Header from '../Header';
 import Facility from './Facility';
-import GoogleMapTest from './GoogleMapTest';
+import GoogleMapTest from '../GoogleMapTest';
+import '../styles/view-leasing.scss';
 
 class ViewLeasing extends React.Component {
   constructor(props) {
@@ -33,7 +31,6 @@ class ViewLeasing extends React.Component {
   }
 
   render() {
-    const houseTitle = this.props.houseTitle;
     function buttonDisplay(like) {
       if (!like) {
         return (
@@ -50,39 +47,6 @@ class ViewLeasing extends React.Component {
         </div>
       );
     }
-
-    const cardStyle = {
-      backgroundImage: "url('/img/cv1.jpg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '400px',
-    };
-
-    const border = {
-      padding: '0',
-      borderRadius: '10px',
-      border: '2px solid rgba(42,107,147,1)',
-    };
-
-    const vlContainer = {
-      margin: '20px',
-    };
-
-    const buttonStyle = {
-      color: '#00838f',
-      textDecorationLine: 'underline',
-      cursor: 'pointer',
-    };
-
-    const label = {
-      backgroundColor: '#00838f',
-      fontSize: '25px',
-      color: 'white',
-      paddingLeft: '14px',
-      paddingRight: '14px',
-      paddingBottom: '9px',
-      paddingTop: '9px',
-    };
 
     const allIconName = [
       {
@@ -117,16 +81,15 @@ class ViewLeasing extends React.Component {
     return (
       <div>
         <Header />
-        <Card style={cardStyle} />
-
-        <div className={vlContainer}>
+        <Card className="card-style" />
+        <div style={{margin: '20px'}}>
           <Row>
             <Col s={8}>
-
               <div className="container">
+
                 <Row>
                   <Col s={2}>
-                    <h6 style={label} className="center">男/女</h6>
+                    <h6 className="center label">男/女</h6>
                   </Col>
                   <Col s={10}>
                     <h4>houseTitle</h4>
@@ -136,21 +99,28 @@ class ViewLeasing extends React.Component {
                 <Row>
                   <Col s={2} />
                   <Col s={3}>
-                    <a style={buttonStyle} onClick={() => scrollToComponent(this.houseInfo, { offset: 0, align: 'top', duration: 300 })}>
+                    <a
+                      className="button-style"
+                      onClick={() => scrollToComponent(this.houseInfo, { offset: 0, align: 'top', duration: 300 })}>
                       <h5>房屋信息</h5>
                     </a>
                   </Col>
                   <Col s={3}>
-                    <a style={buttonStyle} onClick={() => scrollToComponent(this.surrounding, { offset: 0, align: 'top', duration: 300 })}>
+                    <a
+                      className="button-style"
+                      onClick={() => scrollToComponent(this.surrounding, { offset: 0, align: 'top', duration: 300 })}>
                       <h5>小区信息</h5>
                     </a>
                   </Col>
                   <Col s={4}>
-                    <a style={buttonStyle} onClick={() => scrollToComponent(this.arrival, { offset: 0, align: 'top', duration: 300 })}>
+                    <a
+                      className="button-style"
+                      onClick={() => scrollToComponent(this.arrival, { offset: 0, align: 'top', duration: 300 })}>
                       <h5>如何到达</h5>
                     </a>
                   </Col>
                 </Row>
+
                 <Row>
                   <Col s={2} className="cyan-text text-darken-3 right-align">简介</Col>
                   <Col s={10}>
@@ -164,6 +134,7 @@ class ViewLeasing extends React.Component {
                         turn the vehicle in.
                   </Col>
                 </Row>
+                
                 <Row>
                   <Col s={2} className="cyan-text text-darken-3 right-align">
                     <section className="houseInfo" ref={(section) => { this.houseInfo = section; }}>房屋设施</section>
@@ -191,7 +162,7 @@ class ViewLeasing extends React.Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Card style={cardStyle} />
+                  <Card className="card-style" />
                 </Row>
                 <Row>
                   <Col s={2} className="cyan-text text-darken-3 right-align">
@@ -206,7 +177,7 @@ class ViewLeasing extends React.Component {
                 </Row>
                 <Row>
                   <div style={{ height: '185px' }}>
-                    <GoogleMapTest style={cardStyle} />
+                    <GoogleMapTest className="card-style" />
                   </div>
                 </Row>
                 <Row>
