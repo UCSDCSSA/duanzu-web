@@ -4,6 +4,8 @@
  */
 
 import React from 'react';
+import Axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import {
   Row, Col, Card, Input, Icon, Button, Carousel,
@@ -12,76 +14,40 @@ import Header from './Header';
 import LeasingCard from '~/components/LeasingCard';
 import './styles/home.scss';
 
-class RowItem extends React.Component {
-  render() {
-    return (
-      <div className="row" style={{ marginTop: '20px' }}>
-        <div className="col l3 s12 m4">
-          <LeasingCard
-            houseImage="/img/towers.jpg"
-            houseSex="只限女生"
-            houseType="2B2B"
-            houseName="Towers"
-            rent="1000"
-            startDate="1"
-            endDate="3"
-            houseTitle="SS2 CV主卧招租"
-          />
-        </div>
-
-        <div className="col l3 s12 m4">
-          <LeasingCard
-            houseImage="/img/cv.jpg"
-            houseSex="男女不限"
-            houseType="3B1B"
-            houseName="Costa Verde"
-            rent="1000"
-            startDate="1"
-            endDate="3"
-            houseTitle="暑假主卧招租 男女不限"
-          />
-        </div>
-
-        <div className="col l3 s12 m4">
-          <LeasingCard
-            houseImage="/img/international_garden.jpg"
-            houseSex="只限男生"
-            houseType="2B2B"
-            houseName="International Garden"
-            rent="1000"
-            startDate="1"
-            endDate="3"
-            houseTitle="ss1副卧招租"
-          />
-        </div>
-
-        <div className="col l3 s12 m4">
-          <LeasingCard
-            houseImage="/img/cv.jpg"
-            houseSex="男女不限"
-            houseType="2B2B"
-            houseName="Costa Verde"
-            rent="1000"
-            startDate="1"
-            endDate="3"
-            houseTitle="CV village 2b/2b 男女不限"
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
+      cards: [],
       interval: undefined,
-    };
+    }
   }
 
+  componentDidMount() {
+    Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
+      this.setState({ cards: data });
+    });
+    // $('.carousel').carousel({
+    //   fullWidth: true,
+    //   numVisible: 1,
+    //   duration: 250,
+    // });
+    //
+    // if (this.state != null && !this.state.interval) {
+    //   const i = setInterval(() => {
+    //     $('.carousel').carousel('next');
+    //   }, 4500);
+    //
+    //   this.setState({
+    //     interval: i,
+    //   });
+    // }
+  }
+
+
   render() {
+    const { cards } = this.state;
     return (
 
       <div className="home-page">
@@ -108,29 +74,25 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="container">
-          <RowItem />
-          <RowItem />
+          <div className="row" style={{ marginTop: '20px' }}>
+            {cards.map((card) => (
+              <div className="col l3 s12 m4">
+                <LeasingCard
+                  houseImage={card.image}
+                  houseSex={card.sex === 'female' ? '只限女生' : '只限男生'} 
+                  houseType={card.type}
+                  houseName={card.name}
+                  rent={card.rent}
+                  startDate={card.startDate}
+                  endDate={card.endDate}
+                  houseTitle={card.title}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
-  }
-
-  componentDidMount() {
-    // $('.carousel').carousel({
-    //   fullWidth: true,
-    //   numVisible: 1,
-    //   duration: 250,
-    // });
-    //
-    // if (this.state != null && !this.state.interval) {
-    //   const i = setInterval(() => {
-    //     $('.carousel').carousel('next');
-    //   }, 4500);
-    //
-    //   this.setState({
-    //     interval: i,
-    //   });
-    // }
   }
 }
 
