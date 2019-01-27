@@ -26,7 +26,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
-      this.setState({ cards: data });
+      const { content } = data;
+      this.setState({ cards: content });
     });
     // $('.carousel').carousel({
     //   fullWidth: true,
