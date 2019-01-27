@@ -1,53 +1,56 @@
-[
-  {
-    "image": "/img/towers.jpg",
-    "sex": "female",
-    "type": "2B2B",
-    "name": "Towers",
-    "rent": 1500,
-    "startDate": "1",
-    "endDate": "3",
-    "title": "asdasdfasdasdfasdfsadf"
-  },
-  {
-    "image": "/img/lare.jpg",
-    "sex": "male",
-    "type": "1B1B",
-    "name": "La Regencia",
-    "rent": 1500,
-    "startDate": "1",
-    "endDate": "3",
-    "title": "asdasdfasdasdfasdfsadf"
-  },
-  {
-    "image": "/img/lare.jpg",
-    "sex": "male",
-    "type": "1B1B",
-    "name": "La Regencia",
-    "rent": 1500,
-    "startDate": "1",
-    "endDate": "3",
-    "title": "asdasdfasdasdfasdfsadf"
-  },
-  {
-    "image": "/img/lare.jpg",
-    "sex": "male",
-    "type": "1B1B",
-    "name": "La Regencia",
-    "rent": 1500,
-    "startDate": "1",
-    "endDate": "3",
-    "title": "asdasdfasdasdfasdfsadf"
-  },
-  {
-    "image": "/img/lare.jpg",
-    "sex": "male",
-    "type": "1B1B",
-    "name": "La Regencia",
-    "rent": 1500,
-    "startDate": "1",
-    "endDate": "3",
-    "title": "asdasdfasdasdfasdfsadf"
-  }
-]
-
+{
+  "code": 0,
+  "msg": "sadfasdfasdasdfasdf",
+  "content": [
+    {
+      "image": "/img/towers.jpg",
+      "sex": "female",
+      "type": "2B2B",
+      "name": "Towers",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/lare.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/lare.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/lare.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/lare.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    }
+  ]
+}
