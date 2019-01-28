@@ -1,0 +1,56 @@
+{
+  "code": 0,
+  "msg": "sadfasdfasdasdfasdf",
+  "content": [
+    {
+      "image": "/img/towers.jpg",
+      "sex": "female",
+      "type": "2B2B",
+      "name": "Towers",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/cv.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/cv1.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/towers.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    },
+    {
+      "image": "/img/cv1.jpg",
+      "sex": "male",
+      "type": "1B1B",
+      "name": "La Regencia",
+      "rent": 1500,
+      "startDate": "1",
+      "endDate": "3",
+      "title": "asdasdfasdasdfasdfsadf"
+    }
+  ]
+}

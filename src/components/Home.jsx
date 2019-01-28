@@ -80,7 +80,7 @@ class Home extends React.Component {
               <div className="col l3 s12 m4">
                 <LeasingCard
                   houseImage={card.image}
-                  houseSex={card.sex === 'female' ? '只限女生' : '只限男生'} 
+                  houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
                   houseType={card.type}
                   houseName={card.name}
                   rent={card.rent}
