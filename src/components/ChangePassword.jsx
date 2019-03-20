@@ -12,10 +12,10 @@ import React from 'react';
 import {
   Input, Button, Card, Row, Col,
 } from 'react-materialize';
-import Header from './Header';
-import LeasingCard from './LeasingCard';
+import Header from './header/Header';
 
-export default class ChangePassword extends React.Component<{}> {
+// eslint-disable-next-line react/prefer-stateless-function
+class ChangePassword extends React.Component<{}> {
   render() {
     return (
       <div>
@@ -40,3 +40,5 @@ export default class ChangePassword extends React.Component<{}> {
     );
   }
 }
+
+export default ChangePassword;
