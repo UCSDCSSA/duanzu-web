@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * @author: Liby Lee
  * @date: 2017/11/12
@@ -9,16 +11,16 @@ import Sticky from 'react-sticky-el';
 // Import UI Components
 import {
   Input,
-  Button,
   Card,
   Row,
   Col,
   Icon,
 } from 'react-materialize';
-import Header from './Header';
+import Header from '../Header';
 import ImageUploader from './ImageUploader';
+import Amenities from './Amenities';
 
-class Publish extends React.Component {
+class Publish extends React.Component<{}> {
   handleClick() {
     window.location.href = '/display';
   }
@@ -30,12 +32,6 @@ class Publish extends React.Component {
 
     const inputLine = {
       width: '250px',
-    };
-
-    const photoButton = {
-      paddingTop: '50px',
-      paddingBottom: '100px',
-      borderRadius: '0',
     };
 
 
@@ -79,10 +75,10 @@ class Publish extends React.Component {
                 </h4>
               </Row>
               <Row>
-                <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker" onClose={function (e, value) {}}>
+                <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
                   <Icon>date_range</Icon>
                 </Input>
-                <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker" onChange={function (e, value) {}}>
+                <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
                   <Icon>date_range</Icon>
                 </Input>
               </Row>
@@ -131,49 +127,7 @@ class Publish extends React.Component {
                   <label htmlFor="icon_prefix2">注意事项</label>
                 </div>
               </Row>
-              <div style={{ marginLeft: '10px' }}>
-                <Row>
-                  <i className="small material-icons" style={{ float: 'left', marginRight: '15px' }}>event_available</i>
-                  <h5>可用设施（室内&周边）</h5>
-                </Row>
-                <div style={{ marginLeft: '20px' }}>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                  <Row>
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Col s={2} />
-                    <Input s={2} type="checkbox" label="Red" />
-                    <Input s={4} type="checkbox" label="Red" />
-                  </Row>
-                </div>
-              </div>
+              <Amenities/>
               <br />
               {/** <div style={{marginLeft: '20px'}}>
                                 <Row>
