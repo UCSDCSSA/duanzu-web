@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import Header from '~/components/Header';
+import Header from '~/components/header/Header';
 import Developer from './Developer';
 import type { DeveloperInfo } from './types/DeveloperInfo';
 
@@ -25,7 +25,7 @@ class About extends React.Component<{}, AboutState> {
 
   render() {
     const { members } = this.state;
-    
+
     return (
       <div>
         <Header />
