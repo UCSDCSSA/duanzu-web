@@ -5,7 +5,7 @@ import { Col, Row, Card, Tabs, Tab } from 'react-materialize';
 
 import LeasingCard from '../LeasingCard';
 import InfoCard from './InfoCard';
-import Header from '../Header';
+import Header from '../header/Header';
 import Axios from 'axios';
 
 import './styles/profile.scss';

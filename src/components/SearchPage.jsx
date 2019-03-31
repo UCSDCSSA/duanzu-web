@@ -10,7 +10,7 @@ import React from 'react';
 import {
   Input, Button, Card, Row, Col, Icon,
 } from 'react-materialize';
-import Header from './Header';
+import Header from './header/Header';
 import LeasingCard from './LeasingCard';
 import GoogleMapTest from './GoogleMapTest';
 import './styles/search-page.scss';

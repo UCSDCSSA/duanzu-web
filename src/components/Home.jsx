@@ -5,12 +5,11 @@
 
 import React from 'react';
 import Axios from 'axios';
-
-import { Link } from 'react-router-dom';
+// import 'expose-loader?$!expose-loader?jQuery!jquery';
 import {
-  Row, Col, Card, Input, Icon, Button, Carousel,
+  Input, Icon, Carousel
 } from 'react-materialize';
-import Header from './Header';
+import Header from './header/Header';
 import LeasingCard from '~/components/LeasingCard';
 import './styles/home.scss';
 
@@ -29,21 +28,22 @@ class Home extends React.Component {
       const { content } = data;
       this.setState({ cards: content });
     });
-    // $('.carousel').carousel({
-    //   fullWidth: true,
-    //   numVisible: 1,
-    //   duration: 250,
-    // });
-    //
-    // if (this.state != null && !this.state.interval) {
-    //   const i = setInterval(() => {
-    //     $('.carousel').carousel('next');
-    //   }, 4500);
-    //
-    //   this.setState({
-    //     interval: i,
-    //   });
-    // }
+    let elems = document.querySelectorAll('.carousel');
+    M.Carousel.init(elems, {
+      fullWidth: true,
+      numVisible: 1,
+      duration: 250,});
+      
+    var instance = M.Carousel.getInstance(elems[0]);
+    if (this.state != null && !this.state.interval) {
+      const i = setInterval(() => {
+        instance.next();
+      }, 4500);
+    
+      this.setState({
+        interval: i,
+      });
+    }
   }
 
 
@@ -58,7 +58,7 @@ class Home extends React.Component {
         <div className="image-container" style={{ width: '100%', height: '600px' }}>
           <div className="col l12 m12 s12">
 
-            <div className="carousel">
+            <div className="carousel" style={{height: '600px'}}>
               <a className="carousel-item"><img src="/img/cover_image1.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
               <a className="carousel-item"><img src="/img/cover_image2.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
               <a className="carousel-item"><img src="/img/cover_image3.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
@@ -71,7 +71,7 @@ class Home extends React.Component {
                 </div>
                 <a className="waves-effect waves-light btn red">搜索</a>
               </div>
-            </div>
+            </div>   
           </div>
         </div>
         <div className="container">

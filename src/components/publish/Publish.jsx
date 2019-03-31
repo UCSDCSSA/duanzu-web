@@ -16,7 +16,7 @@ import {
   Col,
   Icon,
 } from 'react-materialize';
-import Header from '../Header';
+import Header from '../header/Header';
 import ImageUploader from './ImageUploader';
 import Amenities from './Amenities';
 

@@ -10,7 +10,7 @@ import {
 } from 'react-materialize';
 import scrollToComponent from 'react-scroll-to-component';
 import Sticky from 'react-sticky-el';
-import Header from '../Header';
+import Header from '../header/Header';
 import Facility from './Facility';
 import GoogleMapTest from '../GoogleMapTest';
 import '../styles/view-leasing.scss';
