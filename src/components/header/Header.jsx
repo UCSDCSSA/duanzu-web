@@ -48,7 +48,7 @@ class Header extends React.Component<{},HeaderState> {
     }
   }
 
-  loginDisplay() {
+  loginDisplay = ()=> {
     const { login } = this.state;
     if (login) {
       return (
@@ -76,6 +76,10 @@ class Header extends React.Component<{},HeaderState> {
 
 
   render() {
+    const buttonStyle = {
+      color: 'black',
+      cursor: 'pointer',
+    };
     return (
       <div className="header">
         <nav className="nav">
@@ -88,13 +92,7 @@ class Header extends React.Component<{},HeaderState> {
             </a>
           </div>
           <div className="navRight">
-            <Button
-              className="navRightItem"
-              onClick={() => this.toggle()}
-              onKeyDown={() => this.toggle()}
-            >
-            登陆
-            </Button>
+            <a className="navRightItem" onClick={() => this.toggle()}>登陆</a>
             <a className="navRightItem" href="/searchpage">搜索房源</a>
             <a className="navRightItem" href="/publish">发布房源</a>
           </div>
@@ -114,31 +112,26 @@ class Header extends React.Component<{},HeaderState> {
           >
             <center>
               <Card>
-                <Row>
+              <Row>
                   <Col style={{ width: '50%' }}>
                     <center>
-                      <Button
-                        className="button"
+                      <a
+                        style={buttonStyle}
                         onClick={() => {
-                          this.setState({
-                            login: true,
-                          });
-                        }}
-                        onKeyDown={() => {
                           this.setState({
                             login: true,
                           });
                         }}
                       >
                         <h5>登录</h5>
-                      </Button>
+                      </a>
                     </center>
                   </Col>
 
                   <Col style={{ width: '50%' }}>
                     <center>
-                      <Button
-                        className="button"
+                      <a
+                        style={buttonStyle}
                         onClick={() => {
                           this.setState({
                             login: false,
@@ -146,7 +139,7 @@ class Header extends React.Component<{},HeaderState> {
                         }}
                       >
                         <h5>注册</h5>
-                      </Button>
+                      </a>
                     </center>
                   </Col>
                 </Row>
