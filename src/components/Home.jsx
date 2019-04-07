@@ -20,32 +20,46 @@ class Home extends React.Component {
     this.state = {
       cards: [],
       interval: undefined,
-    }
+    };
   }
 
   componentDidMount() {
-    Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
-      const { content } = data;
-      this.setState({ cards: content });
-    });
-    let elems = document.querySelectorAll('.carousel');
+    const elems = document.querySelectorAll('.carousel');
     M.Carousel.init(elems, {
       fullWidth: true,
       numVisible: 1,
       duration: 250,});
-      
-    var instance = M.Carousel.getInstance(elems[0]);
+
+    let instance = M.Carousel.getInstance(elems[0]);
     if (this.state != null && !this.state.interval) {
       const i = setInterval(() => {
         instance.next();
       }, 4500);
-    
+
       this.setState({
         interval: i,
       });
     }
+    // Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
+    //   const { content } = data;
+    //   this.setState({ cards: content });
+    // });
+    fetch('/ajax/leasing?action=fetchall', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json().then((data) => {
+            console.log(data);
+            this.setState({ cards: data });
+          });
+        }
+        return console.error(response.statusText);
+      });
   }
-
 
   render() {
     const { cards } = this.state;
@@ -76,8 +90,9 @@ class Home extends React.Component {
         </div>
         <div className="container">
           <div className="row" style={{ marginTop: '20px' }}>
-            {cards.map((card) => (
-              <div className="col l3 s12 m4">
+            {cards.map(card => (
+              // eslint-disable-next-line no-underscore-dangle
+              <div className="col l3 s12 m4" key={card._id}>
                 <LeasingCard
                   houseImage={card.image}
                   houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
