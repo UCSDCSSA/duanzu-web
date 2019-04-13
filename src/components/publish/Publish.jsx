@@ -21,6 +21,11 @@ import ImageUploader from './ImageUploader';
 import Amenities from './Amenities';
 
 class Publish extends React.Component<{}> {
+  constructor(props: {}, context: HeaderState) {
+    super(props, context);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleClick() {
     window.location.href = '/display';
   }
@@ -38,6 +43,8 @@ class Publish extends React.Component<{}> {
     return (<div>
       <Header />
       <div style={{ marginLeft: '5%', marginRight: '5%' }}>
+      <form onSubmit={this.handleSubmit}>
+
         <Row>
           <Col s={4}>
             <Sticky>
@@ -176,7 +183,7 @@ class Publish extends React.Component<{}> {
             </Card>
             <Row>
               <div className="center">
-                <button style={publishButton} className="btn waves-effect waves-light btn-large red" type="submit" name="action" onClick={this.handleClick}>
+                <button style={publishButton} className="btn waves-effect waves-light btn-large red" type="submit" name="action">
                   <h5>发布</h5>
                 </button>
               </div>
@@ -184,6 +191,7 @@ class Publish extends React.Component<{}> {
           </Col>
 
         </Row>
+      </form>
       </div>
     </div>
 
@@ -212,6 +220,26 @@ class Publish extends React.Component<{}> {
     //   closeOnSelect: false, // Close upon selecting a date,
     //   min: 1,
     // });
+  }
+
+  toJSONString(form) {
+    console.log(form);
+    const obj = {};
+    const elements = form.querySelectorAll('text, input, textarea');
+    for (let i = 0; i < elements.length; i += 1) {
+      const element = elements[i];
+      const { name, value } = element;
+      if (name) {
+        obj[name] = value;
+      }
+    }
+    return JSON.stringify(obj);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = this.toJSONString(event.target);
+    console.log(data);
   }
 }
 
