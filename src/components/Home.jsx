@@ -53,10 +53,11 @@ class Home extends React.Component {
       .then((response) => {
         if (response.ok) {
           return response.json().then((data) => {
-            console.log(data);
+            console.log(data, 'caonima');
             this.setState({ cards: data });
           });
         }
+        // return console.error(response.statusText);
         return console.error(response.statusText);
       });
   }
@@ -85,7 +86,7 @@ class Home extends React.Component {
                 </div>
                 <a className="waves-effect waves-light btn red">搜索</a>
               </div>
-            </div>   
+            </div>
           </div>
         </div>
         <div className="container">
@@ -94,7 +95,7 @@ class Home extends React.Component {
               // eslint-disable-next-line no-underscore-dangle
               <div className="col l3 s12 m4" key={card._id}>
                 <LeasingCard
-                  houseImage={card.image}
+                  houseImage="../img/house.jpeg"
                   houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
                   houseType={card.type}
                   houseName={card.name}

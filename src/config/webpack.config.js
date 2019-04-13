@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const SRC = path.resolve(__dirname, 'src/public/img');
+
 module.exports = {
   entry: {
     main: './src/index.js',
@@ -42,6 +44,13 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|mp3)$/i,
+        include: SRC,
+        use: [
+          'file-loader',
         ],
       },
     ],
