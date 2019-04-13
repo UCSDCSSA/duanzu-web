@@ -95,14 +95,7 @@ class Home extends React.Component {
               // eslint-disable-next-line no-underscore-dangle
               <div className="col l3 s12 m4" key={card._id}>
                 <LeasingCard
-                  houseImage="../img/house.jpeg"
-                  houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
-                  houseType={card.type}
-                  houseName={card.name}
-                  rent={card.rent}
-                  startDate={card.startDate}
-                  endDate={card.endDate}
-                  houseTitle={card.title}
+                  card={card}
                 />
               </div>
             ))}
@@ -112,5 +105,13 @@ class Home extends React.Component {
     );
   }
 }
-
+//
+// houseImage="../img/house.jpeg"
+// houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
+// houseType={card.type}
+// houseName={card.name}
+// rent={card.rent}
+// startDate={card.startDate}
+// endDate={card.endDate}
+// houseTitle={card.title}
 export default Home;
