@@ -12,13 +12,15 @@ type HeaderState = {
   opened: boolean
 };
 
-class Header extends React.Component<{},HeaderState> {
-  constructor(props:{},context:HeaderState) {
-    super(props,context);
+class Header extends React.Component<{}, HeaderState> {
+  constructor(props: {}, context: HeaderState) {
+    super(props, context);
     this.state = {
       login: true,
       opened: false,
+      user: null,
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getStyle() {
@@ -37,9 +39,90 @@ class Header extends React.Component<{},HeaderState> {
     };
   }
 
+  loginDisplay = () => {
+    const { login } = this.state;
+    if (!login) {
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <Input s={12} id="username" name="username" label="用户名" />
+            <Input s={12} id="email" name="email" type="email" label="邮箱" />
+            <Input s={12} id="password" name="password" type="password" label="密码" />
+            <Input s={12} id="confirm_password" name="confirm_password" type="password" label="确认密码" />
+            <center>
+              <Button waves="light" s={12} >注册账号</Button>
+            </center>
+          </form>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <Input s={12} id="email" name="email" label="邮箱" />
+          <Input s={12} id="password" name="password" type="password" label="密码" />
+          <center>
+            <Button waves="light" s={12}>登录</Button>
+          </center>
+        </form>
+      </div>
+    );
+  }
+
+  toJSONString(form) {
+    const obj = {};
+    const elements = form.querySelectorAll('input, select, textarea');
+    for (let i = 0; i < elements.length; i += 1) {
+      const element = elements[i];
+      const { name, value } = element;
+      if (name) {
+        obj[name] = value;
+      }
+    }
+    return JSON.stringify(obj);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = this.toJSONString(event.target);
+    if (this.state.login) {
+      fetch('/ajax/user?action=login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: data,
+      }).then(response => response.json())
+        .then((response) => {
+          if (response.code === 0) {
+            this.setState({ user: response.content, opened: false });
+          } else {
+            console.log(JSON.stringify(response));
+          }
+        });
+    } else {
+      fetch('/ajax/user?action=register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: data,
+      }).then(response => response.json())
+        .then((response) => {
+          if (response.code === 0) {
+            this.setState({ user: response.content, opened: false });
+          } else {
+            console.log(JSON.stringify(response));
+          }
+        });
+    }
+  }
+
   toggle() {
-    const { opened } = this.state;
-    if (opened) {
+    const { user, opened } = this.state;
+    if (user) {
+      this.setState({ user: null });
+    } else if (opened) {
       console.log('close');
       this.setState({ opened: false });
     } else {
@@ -48,30 +131,11 @@ class Header extends React.Component<{},HeaderState> {
     }
   }
 
-  loginDisplay = ()=> {
-    const { login } = this.state;
-    if (login) {
-      return (
-        <div>
-          <Input s={12} label="用户名" />
-          <Input s={12} type="email" label="邮箱" />
-          <Input s={12} type="password" label="密码" />
-          <Input s={12} type="password" label="确认密码" />
-          <center>
-            <Button waves="light" s={12}>注册账号</Button>
-          </center>
-        </div>
-      );
+  renderButton() {
+    if (this.state.user) {
+      return '登出';
     }
-    return (
-      <div>
-        <Input s={12} label="用户名/邮箱" />
-        <Input s={12} type="password" label="密码" />
-        <center>
-          <Button waves="light" s={12}>登录</Button>
-        </center>
-      </div>
-    );
+    return '登陆';
   }
 
 
@@ -92,7 +156,7 @@ class Header extends React.Component<{},HeaderState> {
             </a>
           </div>
           <div className="navRight">
-            <a className="navRightItem" onClick={() => this.toggle()}>登陆</a>
+            <a className="navRightItem" onClick={() => this.toggle()}>{this.renderButton()}</a>
             <a className="navRightItem" href="/searchpage">搜索房源</a>
             <a className="navRightItem" href="/publish">发布房源</a>
           </div>

@@ -63,7 +63,7 @@ class Login extends React.Component {
             <Input s={12} label="用户名" />
             <Input s={12} type="email" label="邮箱" />
             <Input s={12} type="password" label="密码" />
-            <Input s={12} type="password" label="确认密码" />
+            <Input s={12} type="confirm_password" label="确认密码" />
             <center>
               <Button waves="light" s={12}>注册账号</Button>
             </center>

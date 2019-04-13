@@ -85,7 +85,7 @@ class Home extends React.Component {
                 </div>
                 <a className="waves-effect waves-light btn red">搜索</a>
               </div>
-            </div>   
+            </div>
           </div>
         </div>
         <div className="container">
