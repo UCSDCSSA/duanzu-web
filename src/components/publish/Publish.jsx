@@ -151,10 +151,10 @@ class Publish extends React.Component<{}> {
                     </h4>
                   </Row>
                   <Row>
-                    <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
+                    <Input name="start_date" s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
                       <Icon>date_range</Icon>
                     </Input>
-                    <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
+                    <Input name="end_date" s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
                       <Icon>date_range</Icon>
                     </Input>
                   </Row>
@@ -166,6 +166,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
+                         name="community"
                          placeholder="小区"
                          value={complex}
                          onChange={this.handleChange}
@@ -179,6 +180,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
+                         name="gender_requirement"
                          placeholder="租客性别"
                          value={gender}
                          onChange={(selectedOption) => {
@@ -196,6 +198,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
+                         name="floor_plan"
                          placeholder="房型"
                          value={type}
                          onChange={(selectedOption) => {
@@ -211,6 +214,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
+                         name="rome_avail"
                          placeholder="出租房间"
                          value={room}
                          onChange={(selectedOption) => {
@@ -228,6 +232,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
+                         name="price"
                          placeholder="价格"
                          value={price}
                          onChange={(selectedOption) => {
@@ -238,7 +243,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                   </Row>
                   <Row>
-                    <Input s={12} label="地址" validate="validate" type="text" id="address">
+                    <Input name="location" s={12} label="地址" validate="validate" type="text" id="address">
                       <Icon>add_location</Icon>
                     </Input>
                   </Row>
@@ -246,7 +251,7 @@ class Publish extends React.Component<{}> {
                     <div className="input-field col s12">
                       <i className="material-icons prefix">mode_edit</i>
                       <textarea id="icon_prefix2" className="materialize-textarea" />
-                      <label htmlFor="icon_prefix2" id="alert">注意事项</label>
+                      <label name="notice" htmlFor="icon_prefix2" id="alert">注意事项</label>
                     </div>
                   </Row>
                   <Amenities />
@@ -383,6 +388,7 @@ class Publish extends React.Component<{}> {
     event.preventDefault();
 
     const data = this.toJSONString(event.target);
+    console.log(data);
     fetch('/ajax/leasing?action=insert', {
       method: 'POST',
       headers: {
