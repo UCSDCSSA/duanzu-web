@@ -63,6 +63,7 @@ import {
 import Header from '../header/Header';
 import ImageUploader from './ImageUploader';
 import Amenities from './Amenities';
+import { Redirect } from 'react-router-dom'
 
 class Publish extends React.Component<{}> {
   constructor(props: {}, context: HeaderState) {
@@ -70,6 +71,7 @@ class Publish extends React.Component<{}> {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       selectedOption: {
+        toHome: false,
         complex: '',
         gender: '',
         type: '',
@@ -77,6 +79,11 @@ class Publish extends React.Component<{}> {
         price: ''
       }
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
 
   handleClick() {
@@ -88,6 +95,10 @@ class Publish extends React.Component<{}> {
     }
 
   render() {
+    if (this.state.toHome === true) {
+      return <Redirect to="/" />
+    }
+
     const publishButton = {
       width: '95%',
     };
@@ -104,201 +115,179 @@ class Publish extends React.Component<{}> {
       <div style={{ marginLeft: '5%', marginRight: '5%' }}>
       <form onSubmit={this.handleSubmit}>
 
-        <Row>
-          <Col s={4}>
-            <Sticky>
-              <Card>
-                <h4 align="center">
-                            个人信息
-                </h4>
-                <Row>
-                  <Col s={1} />
-                  <Col s={10}>
-                    <Input label="姓名" validate="validate" style={inputLine}>
-                      <Icon>account_circle</Icon>
-                    </Input>
-                    <Input label="微信号" validate="validate" style={inputLine}>
-                      <Icon>chat</Icon>
-                    </Input>
-                    <Input label="邮箱" validate="validate" style={inputLine}>
-                      <Icon>email</Icon>
-                    </Input>
-                    <Input label="电话号码" validate="validate" type="tel" style={inputLine}>
-                      <Icon>phone</Icon>
-                    </Input>
-                  </Col>
-                  <Col s={1} />
-                </Row>
-              </Card>
-            </Sticky>
-          </Col>
-          <Col s={1} />
-          <Col s={7}>
-            <Card>
-              <Row>
-                <h4 align="center">
-                                    房屋信息
-                </h4>
-              </Row>
-              <Row>
-                <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
-                  <Icon>date_range</Icon>
-                </Input>
-                <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
-                  <Icon>date_range</Icon>
-                </Input>
-              </Row>
-              <Row>
-                <Col
-                  s={1}
-                >
-                  <Icon>location_city</Icon>
-                </Col>
-                <Col s={5}>
-                  <Select
-                     placeholder="小区"
-                     value={complex}
-                     onChange={this.handleChange}
-                     options={options.complex}
-                  />
-                </Col>
-                <Col
-                  s={1}
-                >
-                  <Icon>wc</Icon>
-                </Col>
-                <Col s={5}>
-                  <Select
-                     placeholder="租客性别"
-                     value={gender}
-                     onChange={(selectedOption) => {
-                       this.setState({ selectedOption: { ...this.state.selectedOption, gender: selectedOption } });
-                     }}
-                     options={options.gender}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col
-                  s={1}
-                >
-                  <Icon>home</Icon>
-                </Col>
-                <Col s={5}>
-                  <Select
-                     placeholder="房型"
-                     value={type}
-                     onChange={(selectedOption) => {
-                       this.setState({ selectedOption: { ...this.state.selectedOption, type: selectedOption } });
-                     }}
-                     options={options.type}
-                  />
-                </Col>
-                <Col
-                  s={1}
-                >
-                  <Icon>hotel</Icon>
-                </Col>
-                <Col s={5}>
-                  <Select
-                     placeholder="出租房间"
-                     value={room}
-                     onChange={(selectedOption) => {
-                       this.setState({ selectedOption: { ...this.state.selectedOption, room: selectedOption } });
-                     }}
-                     options={options.room}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col
-                  s={1}
-                >
-                  <Icon>hotel</Icon>
-                </Col>
-                <Col s={5}>
-                  <Select
-                     placeholder="价格"
-                     value={price}
-                     onChange={(selectedOption) => {
-                       this.setState({ selectedOption: { ...this.state.selectedOption, price: selectedOption } });
-                     }}
-                     options={options.price}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Input s={12} label="地址" validate="validate" type="text" id="address">
-                  <Icon>add_location</Icon>
-                </Input>
-              </Row>
-              <Row>
-                <div className="input-field col s12">
-                  <i className="material-icons prefix">mode_edit</i>
-                  <textarea id="icon_prefix2" className="materialize-textarea" />
-                  <label htmlFor="icon_prefix2" id="alert">注意事项</label>
-                </div>
-              </Row>
-              <Amenities />
-              <br />
-              {/** <div style={{marginLeft: '20px'}}>
-                                <Row>
-                                    <i class="small material-icons" style={{float: 'left', marginRight: '15px'}}>insert_photo</i>
-                                    <p style={{fontSize: '20px'}}>添加照片</p>
-                                </Row>
-                                <Row>
-                                <div className="file-field input-field col s6">
-                                  <div class="btn grey">
-                                  <p style={{fontSize: '15px'}}>
-                                    <i className="material-icons left">file_upload</i>
-                                    上传图片
-                                  </p>
-
-                                    <input type="file"/>
-                                  </div>
-                                  <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text"/>
-                                  </div>
-                                </div>
-                                </Row>
-                            </div>* */}
-              <div style={{ marginLeft: '2%' }}>
-                <Row>
-                  <i className="small material-icons" style={{ float: 'left', marginRight: '15px' }}>insert_photo</i>
-                  <h5>添加照片</h5>
-                </Row>
-                // <ImageUploader />
-              </div>
-
-              {/** <Row>
-                              <div className="file-field input-field col s8">
-                                <div className="btn-large grey" style={photoButton}>
-                                <p style={{fontSize: '20px'}}>
-                                  <i className="material-icons left">file_upload</i>
-                                  上传图片
-                                </p>
-                                  <input type="file"/>
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text"/>
-                                </div>
-                              </div>
-                            </Row>* */}
-
-            </Card>
             <Row>
-              <div className="center">
-                <button style={publishButton} className="btn waves-effect waves-light btn-large red" type="submit" name="action">
-                  <h5>发布</h5>
-                </button>
-              </div>
-            </Row>
-          </Col>
+              <Col s={4}>
+                <Sticky>
+                  <Card>
+                    <h4 align="center">
+                                个人信息
+                    </h4>
+                    <Row>
+                      <Col s={1} />
+                      <Col s={10}>
+                        <Input name="user_id" label="姓名" validate="validate" style={inputLine}>
+                          <Icon>account_circle</Icon>
+                        </Input>
+                        <Input name="wechat_id" label="微信号" validate="validate" style={inputLine}>
+                          <Icon>chat</Icon>
+                        </Input>
+                        <Input name="email" label="邮箱" validate="validate" style={inputLine}>
+                          <Icon>email</Icon>
+                        </Input>
+                        <Input name="phone_number" label="电话号码" validate="validate" type="tel" style={inputLine}>
+                          <Icon>phone</Icon>
+                        </Input>
+                      </Col>
+                      <Col s={1} />
+                    </Row>
+                  </Card>
+                </Sticky>
+              </Col>
+              <Col s={8}>
+                <Card>
+                  <Row>
+                    <h4 align="center">
+                                        房屋信息
+                    </h4>
+                  </Row>
+                  <Row>
+                    <Input s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
+                      <Icon>date_range</Icon>
+                    </Input>
+                    <Input s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
+                      <Icon>date_range</Icon>
+                    </Input>
+                  </Row>
+                  <Row>
+                    <Col
+                      s={1}
+                    >
+                      <Icon>location_city</Icon>
+                    </Col>
+                    <Col s={5}>
+                      <Select
+                         placeholder="小区"
+                         value={complex}
+                         onChange={this.handleChange}
+                         options={options.complex}
+                      />
+                    </Col>
+                    <Col
+                      s={1}
+                    >
+                      <Icon>wc</Icon>
+                    </Col>
+                    <Col s={5}>
+                      <Select
+                         placeholder="租客性别"
+                         value={gender}
+                         onChange={(selectedOption) => {
+                           this.setState({ selectedOption: { ...this.state.selectedOption, gender: selectedOption } });
+                         }}
+                         options={options.gender}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col
+                      s={1}
+                    >
+                      <Icon>home</Icon>
+                    </Col>
+                    <Col s={5}>
+                      <Select
+                         placeholder="房型"
+                         value={type}
+                         onChange={(selectedOption) => {
+                           this.setState({ selectedOption: { ...this.state.selectedOption, type: selectedOption } });
+                         }}
+                         options={options.type}
+                      />
+                    </Col>
+                    <Col
+                      s={1}
+                    >
+                      <Icon>hotel</Icon>
+                    </Col>
+                    <Col s={5}>
+                      <Select
+                         placeholder="出租房间"
+                         value={room}
+                         onChange={(selectedOption) => {
+                           this.setState({ selectedOption: { ...this.state.selectedOption, room: selectedOption } });
+                         }}
+                         options={options.room}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col
+                      s={1}
+                    >
+                      <Icon>hotel</Icon>
+                    </Col>
+                    <Col s={5}>
+                      <Select
+                         placeholder="价格"
+                         value={price}
+                         onChange={(selectedOption) => {
+                           this.setState({ selectedOption: { ...this.state.selectedOption, price: selectedOption } });
+                         }}
+                         options={options.price}
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Input s={12} label="地址" validate="validate" type="text" id="address">
+                      <Icon>add_location</Icon>
+                    </Input>
+                  </Row>
+                  <Row>
+                    <div className="input-field col s12">
+                      <i className="material-icons prefix">mode_edit</i>
+                      <textarea id="icon_prefix2" className="materialize-textarea" />
+                      <label htmlFor="icon_prefix2" id="alert">注意事项</label>
+                    </div>
+                  </Row>
+                  <Amenities />
+                  <br />
+                  {/** <div style={{marginLeft: '20px'}}>
+                                    <Row>
+                                        <i class="small material-icons" style={{float: 'left', marginRight: '15px'}}>insert_photo</i>
+                                        <p style={{fontSize: '20px'}}>添加照片</p>
+                                    </Row>
+                                    <Row>
+                                    <div className="file-field input-field col s6">
+                                      <div class="btn grey">
+                                      <p style={{fontSize: '15px'}}>
+                                        <i className="material-icons left">file_upload</i>
+                                        上传图片
+                                      </p>
 
-        </Row>
-      </form>
+                                        <input type="file"/>
+                                      </div>
+                                      <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text"/>
+                                      </div>
+                                    </Row>* */}
+                                    <ImageUploader />
+
+                                    <Row>
+                                      <div className="center">
+                                        <button style={publishButton} className="btn waves-effect waves-light btn-large red" type="submit" name="action">
+                                          <h5>发布</h5>
+                                        </button>
+                                      </div>
+                                    </Row>
+
+                    </Card>
+
+              </Col>
+            </Row>
+
+          </form>
+        </div>
       </div>
-    </div>
 
     // <a href='/#/leasing/view'> change </a>
 
@@ -375,7 +364,6 @@ class Publish extends React.Component<{}> {
   }
 
   toJSONString(form) {
-    console.log(form);
     const obj = {};
     const elements = form.querySelectorAll('text, input, textarea, validate valid');
     let selectElement = form.querySelector('#test');
@@ -384,8 +372,7 @@ class Publish extends React.Component<{}> {
     for (let i = 0; i < elements.length; i += 1) {
       const element = elements[i];
       const { name, value } = element;
-      console.log(value);
-      if (name) {
+      if (name && value) {
         obj[name] = value;
       }
     }
@@ -396,8 +383,20 @@ class Publish extends React.Component<{}> {
     event.preventDefault();
 
     const data = this.toJSONString(event.target);
-    console.log('data:', data);
-
+    fetch('/ajax/leasing?action=insert', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    }).then(response => response.json())
+      .then((response) => {
+        if (response.code === 0) {
+          this.setState({ toHome: true });
+        } else {
+          console.log(JSON.stringify(response));
+        }
+      });
   }
 }
 
