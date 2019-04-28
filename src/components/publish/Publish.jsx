@@ -20,29 +20,29 @@ const options = {
     ],
   gender:
   [
-    { value: 1, label: '男' },
-    { value: 2, label: '女' },
-    { value: 3, label: '男女不限' },
+    { value: 0, label: '男' },
+    { value: 1, label: '女' },
+    { value: 2, label: '男女不限' },
   ],
   type:
   [
-    { value: 1, label: '3b2b' },
-    { value: 2, label: '2b2b' },
-    { value: 3, label: '1b1b' },
+    { value: 0, label: '3b2b' },
+    { value: 1, label: '2b2b' },
+    { value: 2, label: '1b1b' },
   ],
   room:
   [
-    { value: 1, label: '主卧' },
-    { value: 2, label: '侧卧' },
-    { value: 3, label: '客厅' },
+    { value: 0, label: '主卧' },
+    { value: 1, label: '侧卧' },
+    { value: 2, label: '客厅' },
   ],
   price:
   [
-    { value: 1, label: '500以下' },
-    { value: 2, label: '500-700' },
-    { value: 3, label: '700-900' },
-    { value: 4, label: '900-1100' },
-    { value: 5, label: '1100以上' },
+    { value: 0, label: '500以下' },
+    { value: 1, label: '500-700' },
+    { value: 2, label: '700-900' },
+    { value: 3, label: '900-1100' },
+    { value: 4, label: '1100以上' },
   ],
 };
 //
@@ -151,10 +151,10 @@ class Publish extends React.Component<{}> {
                     </h4>
                   </Row>
                   <Row>
-                    <Input name="start_date" s={6} label="开始日期" name="on" type="text" id="startDate" className="datepicker">
+                    <Input name="start_date" s={6} label="开始日期" type="text" id="startDate" className="datepicker">
                       <Icon>date_range</Icon>
                     </Input>
-                    <Input name="end_date" s={6} label="结束日期" name="on" type="text" id="endDate" className="datepicker">
+                    <Input name="end_date" s={6} label="结束日期" type="text" id="endDate" className="datepicker">
                       <Icon>date_range</Icon>
                     </Input>
                   </Row>
@@ -180,7 +180,7 @@ class Publish extends React.Component<{}> {
                     </Col>
                     <Col s={5}>
                       <Select
-                         name="gender_requirement"
+                         name="gender_req"
                          placeholder="租客性别"
                          value={gender}
                          onChange={(selectedOption) => {
