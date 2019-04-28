@@ -8,6 +8,50 @@
 // Import react related components
 import React from 'react';
 import Sticky from 'react-sticky-el';
+import Select from 'react-select';
+
+const options = {
+  complex:
+    [
+      { value: 'cv', label: 'Costa Verde' },
+      { value: 'palms', label: 'Palms' },
+      { value: 'crossroad', label: 'Crossroad' },
+      { value: 'lux', label: 'Lux' }
+    ],
+  gender:
+  [
+    { value: 1, label: '男' },
+    { value: 2, label: '女' },
+    { value: 3, label: '男女不限' },
+  ],
+  type:
+  [
+    { value: 1, label: '3b2b' },
+    { value: 2, label: '2b2b' },
+    { value: 3, label: '1b1b' },
+  ],
+  room:
+  [
+    { value: 1, label: '主卧' },
+    { value: 2, label: '侧卧' },
+    { value: 3, label: '客厅' },
+  ],
+  price:
+  [
+    { value: 1, label: '500以下' },
+    { value: 2, label: '500-700' },
+    { value: 3, label: '700-900' },
+    { value: 4, label: '900-1100' },
+    { value: 5, label: '1100以上' },
+  ],
+};
+//
+// <option value="1">500以下</option>
+// <option value="2">500-700</option>
+// <option value="3">700-900</option>
+// <option value="4">900-1100</option>
+// <option value="5">1100以上</option>
+
 // Import UI Components
 import {
   Input,
@@ -24,11 +68,24 @@ class Publish extends React.Component<{}> {
   constructor(props: {}, context: HeaderState) {
     super(props, context);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      selectedOption: {
+        complex: '',
+        gender: '',
+        type: '',
+        room: '',
+        price: ''
+      }
+    };
   }
 
   handleClick() {
     window.location.href = '/display';
   }
+
+  handleChange = (selectedOption) => {
+      this.setState({ selectedOption: { ...this.state.selectedOption, complex: selectedOption } });
+    }
 
   render() {
     const publishButton = {
@@ -38,9 +95,11 @@ class Publish extends React.Component<{}> {
     const inputLine = {
       width: '250px',
     };
-
-
-    return (<div>
+    const { selectedOption } = this.state;
+    const { complex, gender, type, room, price } = selectedOption;
+    console.log(complex);
+    return (
+<div>
       <Header />
       <div style={{ marginLeft: '5%', marginRight: '5%' }}>
       <form onSubmit={this.handleSubmit}>
@@ -90,40 +149,86 @@ class Publish extends React.Component<{}> {
                 </Input>
               </Row>
               <Row>
-                <Input s={6} label="小区" validate="validate" type="select" icon="location_city">
-                  <option value="1">CV</option>
-                  <option value="2">IG</option>
-                  <option value="3">360</option>
-                </Input>
-                <Input s={6} type="select" label="租客性别" icon="wc" defaultValue="3">
-                  <option value="1">男</option>
-                  <option value="2">女</option>
-                  <option value="3">男/女</option>
-                </Input>
+                <Col
+                  s={1}
+                >
+                  <Icon>location_city</Icon>
+                </Col>
+                <Col s={5}>
+                  <Select
+                     placeholder="小区"
+                     value={complex}
+                     onChange={this.handleChange}
+                     options={options.complex}
+                  />
+                </Col>
+                <Col
+                  s={1}
+                >
+                  <Icon>wc</Icon>
+                </Col>
+                <Col s={5}>
+                  <Select
+                     placeholder="租客性别"
+                     value={gender}
+                     onChange={(selectedOption) => {
+                       this.setState({ selectedOption: { ...this.state.selectedOption, gender: selectedOption } });
+                     }}
+                     options={options.gender}
+                  />
+                </Col>
               </Row>
               <Row>
-                <Input s={6} label="房型" validate="validate" type="select" icon="home">
-                  <option value="1">3b 2b</option>
-                  <option value="2">2b 2b</option>
-                  <option value="3">1b 1b</option>
-                </Input>
-                <Input s={6} label="出租房间" validate="validate" type="select" icon="hotel">
-                  <option value="1">主卧</option>
-                  <option value="2">侧卧</option>
-                  <option value="3">客厅</option>
-                </Input>
+                <Col
+                  s={1}
+                >
+                  <Icon>home</Icon>
+                </Col>
+                <Col s={5}>
+                  <Select
+                     placeholder="房型"
+                     value={type}
+                     onChange={(selectedOption) => {
+                       this.setState({ selectedOption: { ...this.state.selectedOption, type: selectedOption } });
+                     }}
+                     options={options.type}
+                  />
+                </Col>
+                <Col
+                  s={1}
+                >
+                  <Icon>hotel</Icon>
+                </Col>
+                <Col s={5}>
+                  <Select
+                     placeholder="出租房间"
+                     value={room}
+                     onChange={(selectedOption) => {
+                       this.setState({ selectedOption: { ...this.state.selectedOption, room: selectedOption } });
+                     }}
+                     options={options.room}
+                  />
+                </Col>
               </Row>
               <Row>
-                <Input s={6} type="select" label="价格" icon="attach_money">
-                  <option value="1">500以下</option>
-                  <option value="2">500-700</option>
-                  <option value="3">700-900</option>
-                  <option value="4">900-1100</option>
-                  <option value="5">1100以上</option>
-                </Input>
+                <Col
+                  s={1}
+                >
+                  <Icon>hotel</Icon>
+                </Col>
+                <Col s={5}>
+                  <Select
+                     placeholder="价格"
+                     value={price}
+                     onChange={(selectedOption) => {
+                       this.setState({ selectedOption: { ...this.state.selectedOption, price: selectedOption } });
+                     }}
+                     options={options.price}
+                  />
+                </Col>
               </Row>
               <Row>
-                <Input s={12} label="地址" validate="validate" type="text">
+                <Input s={12} label="地址" validate="validate" type="text" id="address">
                   <Icon>add_location</Icon>
                 </Input>
               </Row>
@@ -131,10 +236,10 @@ class Publish extends React.Component<{}> {
                 <div className="input-field col s12">
                   <i className="material-icons prefix">mode_edit</i>
                   <textarea id="icon_prefix2" className="materialize-textarea" />
-                  <label htmlFor="icon_prefix2">注意事项</label>
+                  <label htmlFor="icon_prefix2" id="alert">注意事项</label>
                 </div>
               </Row>
-              <Amenities/>
+              <Amenities />
               <br />
               {/** <div style={{marginLeft: '20px'}}>
                                 <Row>
@@ -162,7 +267,7 @@ class Publish extends React.Component<{}> {
                   <i className="small material-icons" style={{ float: 'left', marginRight: '15px' }}>insert_photo</i>
                   <h5>添加照片</h5>
                 </Row>
-                <ImageUploader />
+                // <ImageUploader />
               </div>
 
               {/** <Row>
@@ -201,6 +306,53 @@ class Publish extends React.Component<{}> {
   }
 
 
+  //
+  //   <Input s={6} label="小区" validate="validate" type="select" icon="location_city">
+  //     <option value="1">CV</option>
+  //     <option value="2">IG</option>
+  //     <option value="3">360</option>
+  //   </Input>
+  //   <Input s={6} type="select" label="租客性别" icon="wc" defaultValue="3">
+  //     <option value="1">男</option>
+  //     <option value="2">女</option>
+  //     <option value="3">男/女</option>
+  //   </Input>
+  // </Row>
+  // <Row>
+  //   <Input s={6} label="房型" validate="validate" type="select" icon="home">
+  //     <option value="1">3b 2b</option>
+  //     <option value="2">2b 2b</option>
+  //     <option value="3">1b 1b</option>
+  //   </Input>
+  //   <Input s={6} label="出租房间" validate="validate" type="select" icon="hotel">
+  //     <option value="1">主卧</option>
+  //     <option value="2">侧卧</option>
+  //     <option value="3">客厅</option>
+  //   </Input>
+  // </Row>
+  // <Row>
+  //   <Input s={6} type="select" label="价格" icon="attach_money" id="price">
+  //     <option value="1">500以下</option>
+  //     <option value="2">500-700</option>
+  //     <option value="3">700-900</option>
+  //     <option value="4">900-1100</option>
+  //     <option value="5">1100以上</option>
+  //   </Input>
+  // </Row>
+  // <Row>
+  //   <Input s={12} label="地址" validate="validate" type="text" id="address">
+  //     <Icon>add_location</Icon>
+  //   </Input>
+  // </Row>
+  // <Row>
+  //   <div className="input-field col s12">
+  //     <i className="material-icons prefix">mode_edit</i>
+  //     <textarea id="icon_prefix2" className="materialize-textarea" />
+  //     <label htmlFor="icon_prefix2" id="alert">注意事项</label>
+  //   </div>
+  // </Row>
+  //
+
   componentDidMount() {
     // $('#startDate').pickadate({
     //   selectMonths: true, // Creates a dropdown to control month
@@ -225,10 +377,14 @@ class Publish extends React.Component<{}> {
   toJSONString(form) {
     console.log(form);
     const obj = {};
-    const elements = form.querySelectorAll('text, input, textarea');
+    const elements = form.querySelectorAll('text, input, textarea, validate valid');
+    let selectElement = form.querySelector('#test');
+    console.log(selectElement);
+    console.log(elements);
     for (let i = 0; i < elements.length; i += 1) {
       const element = elements[i];
       const { name, value } = element;
+      console.log(value);
       if (name) {
         obj[name] = value;
       }
@@ -238,8 +394,10 @@ class Publish extends React.Component<{}> {
 
   handleSubmit(event) {
     event.preventDefault();
+
     const data = this.toJSONString(event.target);
-    console.log(data);
+    console.log('data:', data);
+
   }
 }
 

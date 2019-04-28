@@ -54,6 +54,7 @@ class Home extends React.Component {
         if (response.ok) {
           return response.json().then((data) => {
             console.log(data, 'caonima');
+            console.log(data);
             this.setState({ cards: data });
           });
         }
