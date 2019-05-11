@@ -8,7 +8,7 @@ import InfoCard from './InfoCard';
 import Header from '../header/Header';
 import Axios from 'axios';
 
-import './styles/profile.scss';
+import '../../styles/profile.scss';
 
 
 export default class Profile extends React.Component<{}> {

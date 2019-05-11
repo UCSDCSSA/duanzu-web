@@ -3,7 +3,7 @@
 import React from 'react';
 import type { DeveloperInfo } from './types/DeveloperInfo';
 
-import './styles/developer.scss';
+import '../../styles/developer.scss';
 
 export default class Developer extends React.Component<DeveloperInfo> {
   render() {

@@ -13,7 +13,7 @@ import Sticky from 'react-sticky-el';
 import Header from '../header/Header';
 import Facility from './Facility';
 import GoogleMapTest from '../GoogleMapTest';
-import '../styles/view-leasing.scss';
+import '../../styles/view-leasing.scss';
 
 class ViewLeasing extends React.Component {
   constructor(props) {

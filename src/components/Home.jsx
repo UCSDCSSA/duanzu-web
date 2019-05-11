@@ -10,8 +10,8 @@ import {
   Input, Icon, Carousel
 } from 'react-materialize';
 import Header from './header/Header';
-import LeasingCard from '~/components/LeasingCard';
-import './styles/home.scss';
+import LeasingCard from './LeasingCard';
+import '../styles/home.scss';
 
 class Home extends React.Component {
   constructor(props, context) {

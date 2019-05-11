@@ -19,7 +19,7 @@ import {
   Tabs,
   Tab
 } from 'react-materialize';
-import './styles/leasing-card.scss';
+import '../styles/leasing-card.scss';
 
 const getGenderRequirment = (gender) => {
   if (gender === 0) {

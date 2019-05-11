@@ -13,7 +13,7 @@ import {
 import Header from './header/Header';
 import LeasingCard from './LeasingCard';
 import GoogleMapTest from './GoogleMapTest';
-import './styles/search-page.scss';
+import '../styles/search-page.scss';
 // import $ from 'jquery';
 
 class Tag extends React.Component {

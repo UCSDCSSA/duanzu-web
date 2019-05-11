@@ -1,11 +1,13 @@
 //@flow
 
 import React from 'react';
-import './styles/header.scss';
+import '../../styles/header.scss';
 
 import {
   Card, Row, Col, Input, Button,
 } from 'react-materialize';
+import Register from '../Register';
+import Login from '../Login';
 
 type HeaderState = {
   login: boolean,
@@ -43,29 +45,11 @@ class Header extends React.Component<{}, HeaderState> {
     const { login } = this.state;
     if (!login) {
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <Input s={12} id="username" name="username" label="用户名" />
-            <Input s={12} id="email" name="email" type="email" label="邮箱" />
-            <Input s={12} id="password" name="password" type="password" label="密码" />
-            <Input s={12} id="confirm_password" name="confirm_password" type="password" label="确认密码" />
-            <center>
-              <Button waves="light" s={12} >注册账号</Button>
-            </center>
-          </form>
-        </div>
+        <Register />
       );
     }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <Input s={12} id="email" name="email" label="邮箱" />
-          <Input s={12} id="password" name="password" type="password" label="密码" />
-          <center>
-            <Button waves="light" s={12}>登录</Button>
-          </center>
-        </form>
-      </div>
+      <Login />
     );
   }
 
@@ -81,10 +65,17 @@ class Header extends React.Component<{}, HeaderState> {
     }
     return JSON.stringify(obj);
   }
-
+  isValidPassword(pwd) {
+    var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    return re.test(String(pwd))
+  }
   handleSubmit(event) {
     event.preventDefault();
     const data = this.toJSONString(event.target);
+    if (!this.isValidPassword(data.password)) {
+      console.log(data)
+      return;
+    }
     if (this.state.login) {
       fetch('/ajax/user?action=login', {
         method: 'POST',
