@@ -71,6 +71,7 @@
     "react-select": "^2.4.3",
     "react-sticky-el": "^1.0.20",
     "recompose": "^0.30.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "universal-cookie": "^4.0.0"
   }
 }

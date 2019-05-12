@@ -62,7 +62,7 @@ class Home extends React.Component {
 
       <div className="home-page">
 
-        <Header />
+        <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
 
         <div className="image-container" style={{ width: '100%', height: '600px' }}>
           <div className="col l12 m12 s12">

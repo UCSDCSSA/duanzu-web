@@ -110,8 +110,8 @@ class Publish extends React.Component<{}> {
     const { complex, gender, type, room, price } = selectedOption;
     console.log(complex);
     return (
-<div>
-      <Header />
+    <div>
+      <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn}/>
       <div style={{ marginLeft: '5%', marginRight: '5%' }}>
       <form onSubmit={this.handleSubmit}>
 

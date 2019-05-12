@@ -19,9 +19,8 @@ class Header extends React.Component<{}, HeaderState> {
     this.state = {
       login: true,
       opened: false,
-      user: null,
+      isLoggedIn: this.props.isLoggedIn,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getStyle() {
@@ -43,77 +42,26 @@ class Header extends React.Component<{}, HeaderState> {
   //   );
   // }
 
-  toJSONString(form) {
-    const obj = {};
-    const elements = form.querySelectorAll('input, select, textarea');
-    for (let i = 0; i < elements.length; i += 1) {
-      const element = elements[i];
-      const { name, value } = element;
-      if (name) {
-        obj[name] = value;
-      }
-    }
-    return JSON.stringify(obj);
+  handleLogin = (response) => {
+    this.setState({ isLoggedIn: true, opened: false });
+    this.props.handleLogin(response);
   }
-  isValidPassword(pwd) {
-    var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-    return re.test(String(pwd))
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = this.toJSONString(event.target);
-    if (!this.isValidPassword(data.password)) {
-      console.log(data)
-      return;
-    }
-    if (this.state.login) {
-      fetch('/ajax/user?action=login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: data,
-      }).then(response => response.json())
-        .then((response) => {
-          if (response.code === 0) {
-            this.setState({ user: response.content, opened: false });
-          } else {
-            console.log(JSON.stringify(response));
-          }
-        });
-    } else {
-      fetch('/ajax/user?action=register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: data,
-      }).then(response => response.json())
-        .then((response) => {
-          if (response.code === 0) {
-            this.setState({ user: response.content, opened: false });
-          } else {
-            console.log(JSON.stringify(response));
-          }
-        });
-    }
-  }
-
   toggle() {
-    const { user, opened } = this.state;
-    if (user) {
-      this.setState({ user: null });
-    } else if (opened) {
-      console.log('close');
-      this.setState({ opened: false });
+    const { isLoggedIn, opened } = this.state;
+    if (isLoggedIn) {
+      this.props.handleLogout();
+      this.setState({ isLoggedIn: false });
     } else {
-      console.log('open');
-      this.setState({ opened: true });
+      if (opened) {
+        this.setState({ opened: false });
+      } else {
+        this.setState({ opened: true });
+      }
     }
   }
 
   renderButton() {
-    if (this.state.user) {
+    if (this.state.isLoggedIn) {
       return '登出';
     }
     return '登陆';
@@ -151,10 +99,9 @@ class Header extends React.Component<{}, HeaderState> {
         <div
           style={this.getStyle()}
           onClick={() => this.toggle()}
-          onKeyDown={() => this.toggle()}
           role="presentation"
         >
-          <LoginWindow handleSubmit={this.handleSubmit} />
+          <LoginWindow handleLogin={this.handleLogin} />
         </div>
       </div>
     );
