@@ -19,6 +19,9 @@ class About extends React.Component<{}, AboutState> {
       }, {
         avatar: "https://66.media.tumblr.com/tumblr_mdzufxZkrX1rsr4fw.png",
         name: "遠坂凛"
+      }, {
+        avatar: "http://ucsdcssa.org/wp-content/uploads/2018/07/IMG_0271.jpg",
+        name: "谭鑫培"
       }],
     };
   }

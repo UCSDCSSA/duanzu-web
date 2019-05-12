@@ -6,8 +6,7 @@ import '../../styles/header.scss';
 import {
   Card, Row, Col, Input, Button,
 } from 'react-materialize';
-import Register from '../Register';
-import Login from '../Login';
+import LoginWindow from '../LoginWindow';
 
 type HeaderState = {
   login: boolean,
@@ -28,30 +27,21 @@ class Header extends React.Component<{}, HeaderState> {
   getStyle() {
     const { opened } = this.state;
     return {
-      position: 'fixed',
-      width: '100%',
-      height: '100%',
-      left: '0',
-      top: '0',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      alignItems: 'center',
-      justifyContent: 'center',
       display: opened ? 'flex' : 'none',
-      zIndex: '1',
     };
   }
 
-  loginDisplay = () => {
-    const { login } = this.state;
-    if (!login) {
-      return (
-        <Register />
-      );
-    }
-    return (
-      <Login />
-    );
-  }
+  // loginDisplay = () => {
+  //   const { login } = this.state;
+  //   if (!login) {
+  //     return (
+  //       <Register />
+  //     );
+  //   }
+  //   return (
+  //     <Login />
+  //   );
+  // }
 
   toJSONString(form) {
     const obj = {};
@@ -143,7 +133,13 @@ class Header extends React.Component<{}, HeaderState> {
               className="navRightItem"
               href="/"
             >
-            UCSD CSSA 短租平台
+              UCSD CSSA 短租平台
+            </a>
+            <a
+              className="navRightItem"
+              href="/about"
+            >
+              关于我们
             </a>
           </div>
           <div className="navRight">
@@ -153,57 +149,12 @@ class Header extends React.Component<{}, HeaderState> {
           </div>
         </nav>
         <div
-          className="mask"
           style={this.getStyle()}
           onClick={() => this.toggle()}
           onKeyDown={() => this.toggle()}
           role="presentation"
         >
-          <div
-            className="login"
-            onClick={e => e.stopPropagation()}
-            onKeyDown={e => e.stopPropagation()}
-            role="presentation"
-          >
-            <center>
-              <Card>
-              <Row>
-                  <Col style={{ width: '50%' }}>
-                    <center>
-                      <a
-                        style={buttonStyle}
-                        onClick={() => {
-                          this.setState({
-                            login: true,
-                          });
-                        }}
-                      >
-                        <h5>登录</h5>
-                      </a>
-                    </center>
-                  </Col>
-
-                  <Col style={{ width: '50%' }}>
-                    <center>
-                      <a
-                        style={buttonStyle}
-                        onClick={() => {
-                          this.setState({
-                            login: false,
-                          });
-                        }}
-                      >
-                        <h5>注册</h5>
-                      </a>
-                    </center>
-                  </Col>
-                </Row>
-                <Row>
-                  { this.loginDisplay() }
-                </Row>
-              </Card>
-            </center>
-          </div>
+          <LoginWindow handleSubmit={this.handleSubmit} />
         </div>
       </div>
     );

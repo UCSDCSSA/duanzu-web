@@ -4,21 +4,6 @@
 */
 
 import React from 'react';
-
-import {Link} from 'react-router-dom';
-
-import {
-  Card,
-  Collection,
-  CollectionItem,
-  Row,
-  Col,
-  Input,
-  Icon,
-  CardTitle,
-  Tabs,
-  Tab
-} from 'react-materialize';
 import '../styles/leasing-card.scss';
 
 const getGenderRequirment = (gender) => {

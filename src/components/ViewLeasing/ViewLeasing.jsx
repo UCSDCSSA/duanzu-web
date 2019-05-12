@@ -6,7 +6,7 @@
 import React from 'react';
 // Import UI Components
 import {
-  Input, Button, Card, Row, Col,
+  Card, Row, Col,
 } from 'react-materialize';
 import scrollToComponent from 'react-scroll-to-component';
 import Sticky from 'react-sticky-el';

@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import About from '~/components/about/About';
 
 import Home from '~/components/Home';
-import Login from '~/components/Login';
+import LoginWindow from '~/components/LoginWindow';
 import NotFound from '~/components/NotFound';
 import Publish from '~/components/publish/Publish';
 import ChangePassword from '~/components/ChangePassword';
@@ -21,7 +21,7 @@ export default class Router extends React.Component<{}> {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={LoginWindow} />
           <Route exact path="/about" component={About} />
           <Route exact path="/publish" component={Publish} />
           <Route exact path="/leasing" component={ViewLeasing} />

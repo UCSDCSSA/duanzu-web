@@ -4,10 +4,8 @@
  */
 
 import React from 'react';
-import Axios from 'axios';
-// import 'expose-loader?$!expose-loader?jQuery!jquery';
 import {
-  Input, Icon, Carousel
+  Input, Icon
 } from 'react-materialize';
 import Header from './header/Header';
 import LeasingCard from './LeasingCard';
@@ -40,10 +38,6 @@ class Home extends React.Component {
         interval: i,
       });
     }
-    // Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
-    //   const { content } = data;
-    //   this.setState({ cards: content });
-    // });
     fetch('/ajax/leasing?action=fetchall', {
       method: 'GET',
       headers: {
@@ -58,7 +52,6 @@ class Home extends React.Component {
             this.setState({ cards: data });
           });
         }
-        // return console.error(response.statusText);
         return console.error(response.statusText);
       });
   }
@@ -81,8 +74,8 @@ class Home extends React.Component {
               <a className="carousel-item"><img src="/img/cover_image4.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
 
               <div className="search-input col l10">
-                <Icon className="medium material-icons grey-text lighten-1"> search </Icon>
-                <div className="user-input" style={{ width: '60%', display: 'inline-flex', height: '65px' }}>
+                <Icon className="medium material-icons"> search </Icon>
+                <div className="user-input-container" style={{ width: '60%', display: 'inline-flex', height: '100%'}}>
                   <Input placeholder="请输入小区" id="user_input" type="text" />
                 </div>
                 <a className="waves-effect waves-light btn red">搜索</a>
