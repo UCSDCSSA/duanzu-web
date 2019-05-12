@@ -31,7 +31,7 @@ class About extends React.Component<{}, AboutState> {
 
     return (
       <div>
-        <Header />
+        <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
         <div className="container">
           <h2>UCSD CSSA Tec Development Team</h2>
           <h5>CSSA技术部隶属于加州大学圣地亚哥分校中国学生学者联合会，下属设立开发组和摄制组。</h5>

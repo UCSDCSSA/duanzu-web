@@ -80,7 +80,7 @@ class ViewLeasing extends React.Component {
 
     return (
       <div>
-        <Header />
+        <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
         <Card className="card-style" />
         <div style={{margin: '20px'}}>
           <Row>

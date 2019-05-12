@@ -207,7 +207,7 @@ const ChangeProfile = () => {
 
   return (
     <div>
-      <Header />
+      <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
       <div style={backgroundStyle}>
         <div className="container">
           <h5  style={{ 'margin-bottom': 60 }}>

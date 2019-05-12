@@ -57,18 +57,27 @@ export default class Router extends React.Component<{}> {
     else
       return this.getHome();
   }
+  getAbout = () => {
+    return <About handleLogin={this.handleLogin} handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
+  }
+  getViewLeasing = () => {
+    return <ViewLeasing handleLogin={this.handleLogin} handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
+  }
+  getSearchPage = () => {
+    return <SearchPage handleLogin={this.handleLogin} handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
+  }
   render() {
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={this.getHome} />
           <Route exact path="/login" component={LoginWindow} />
-          <Route exact path="/about" component={About} />
+          <Route exact path="/about" render={this.getAbout} />
           <Route exact path="/publish" render={this.getPublish} />
-          <Route exact path="/leasing" component={ViewLeasing} />
+          <Route exact path="/leasing" render={this.getViewLeasing}/>
           <Route exact path="/profile" render={this.getProfile} />
           <Route exact path="/profile/change_password" component={ChangePassword} />
-          <Route exact path="/searchpage" component={SearchPage} />
+          <Route exact path="/searchpage" render={this.getSearchPage} />
           <Route exact path="/map" component={GoogleMapTest} />
           <Route path="*" component={NotFound} />
         </Switch>

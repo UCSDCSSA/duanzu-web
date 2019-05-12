@@ -49,7 +49,7 @@ export default class Profile extends React.Component<{}> {
 
     return (
       <div>
-        <Header />
+        <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
         <div className="profile">
           <div className="container user-profile">
           {username.map((user) => (

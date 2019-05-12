@@ -143,7 +143,7 @@ class SearchPage extends React.Component {
     return (
       <div className="search-page" style={{ position: 'fixed', height: 'calc(100%)', width: '100%' }}>
 
-        <Header />
+        <Header handleLogin={this.props.handleLogin} handleLogout={this.props.handleLogout} isLoggedIn={this.props.isLoggedIn} />
 
         <div className="row" style={{ height: 'calc(100% - 60px)' }}>
           <div className="col l7 s12">
