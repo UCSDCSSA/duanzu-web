@@ -7,11 +7,12 @@ type UserInfo = {
   icon: string,
   name: string,
   id: string,
+  context: string,
 }
 
 export default class InfoCard extends React.Component<UserInfo> {
   render() {
-    const { icon, name, id } = this.props;
+    const { icon, name, id, context } = this.props;
     // TODO need info from data base
     return (
       <div>
@@ -26,7 +27,7 @@ export default class InfoCard extends React.Component<UserInfo> {
               </center>
             </Col>
             <Col s={7}>
-              <h6>{id}</h6>
+              <h6>{context}</h6>
             </Col>
           </Row>
         </div>

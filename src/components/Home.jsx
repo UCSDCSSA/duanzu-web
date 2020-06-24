@@ -5,12 +5,11 @@
 
 import React from 'react';
 import Axios from 'axios';
-
-import { Link } from 'react-router-dom';
+// import 'expose-loader?$!expose-loader?jQuery!jquery';
 import {
-  Row, Col, Card, Input, Icon, Button, Carousel,
+  Input, Icon, Carousel
 } from 'react-materialize';
-import Header from './Header';
+import Header from './header/Header';
 import LeasingCard from '~/components/LeasingCard';
 import './styles/home.scss';
 
@@ -21,31 +20,48 @@ class Home extends React.Component {
     this.state = {
       cards: [],
       interval: undefined,
-    }
+    };
   }
 
   componentDidMount() {
-    Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
-      const { content } = data;
-      this.setState({ cards: content });
-    });
-    // $('.carousel').carousel({
-    //   fullWidth: true,
-    //   numVisible: 1,
-    //   duration: 250,
-    // });
-    //
-    // if (this.state != null && !this.state.interval) {
-    //   const i = setInterval(() => {
-    //     $('.carousel').carousel('next');
-    //   }, 4500);
-    //
-    //   this.setState({
-    //     interval: i,
-    //   });
-    // }
-  }
+    const elems = document.querySelectorAll('.carousel');
+    M.Carousel.init(elems, {
+      fullWidth: true,
+      numVisible: 1,
+      duration: 250,});
 
+    let instance = M.Carousel.getInstance(elems[0]);
+    if (this.state != null && !this.state.interval) {
+      const i = setInterval(() => {
+        instance.next();
+      }, 4500);
+
+      this.setState({
+        interval: i,
+      });
+    }
+    // Axios.get("/data/mock/get_home_cards.json").then(({ data }) => {
+    //   const { content } = data;
+    //   this.setState({ cards: content });
+    // });
+    fetch('/ajax/leasing?action=fetchall', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json().then((data) => {
+            console.log(data, 'caonima');
+            console.log(data);
+            this.setState({ cards: data });
+          });
+        }
+        // return console.error(response.statusText);
+        return console.error(response.statusText);
+      });
+  }
 
   render() {
     const { cards } = this.state;
@@ -58,7 +74,7 @@ class Home extends React.Component {
         <div className="image-container" style={{ width: '100%', height: '600px' }}>
           <div className="col l12 m12 s12">
 
-            <div className="carousel">
+            <div className="carousel" style={{height: '600px'}}>
               <a className="carousel-item"><img src="/img/cover_image1.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
               <a className="carousel-item"><img src="/img/cover_image2.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
               <a className="carousel-item"><img src="/img/cover_image3.jpg" style={{ height: '600px', width: '100%', filter: 'brightness(70%)' }} /></a>
@@ -76,17 +92,11 @@ class Home extends React.Component {
         </div>
         <div className="container">
           <div className="row" style={{ marginTop: '20px' }}>
-            {cards.map((card) => (
-              <div className="col l3 s12 m4">
+            {cards.map(card => (
+              // eslint-disable-next-line no-underscore-dangle
+              <div className="col l3 s12 m4" key={card._id}>
                 <LeasingCard
-                  houseImage={card.image}
-                  houseSex={card.sex === 'female' ? '只限女生' : '只限男生'} 
-                  houseType={card.type}
-                  houseName={card.name}
-                  rent={card.rent}
-                  startDate={card.startDate}
-                  endDate={card.endDate}
-                  houseTitle={card.title}
+                  card={card}
                 />
               </div>
             ))}
@@ -96,5 +106,13 @@ class Home extends React.Component {
     );
   }
 }
-
+//
+// houseImage="../img/house.jpeg"
+// houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
+// houseType={card.type}
+// houseName={card.name}
+// rent={card.rent}
+// startDate={card.startDate}
+// endDate={card.endDate}
+// houseTitle={card.title}
 export default Home;

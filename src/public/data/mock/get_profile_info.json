@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "msg": "sadfasdfasdasdfasdf",
+  "content": [
+    {
+      "id": "1",
+      "name": "邮箱",
+      "icon": "email",
+      "context": "xxxx@gmail.com"
+    }, {
+      "id": "2",
+      "name": "电话",
+      "icon": "phone",
+      "context": "858-561-1234"
+    }, {
+      "id": "3",
+      "name": "微信",
+      "icon": "chat",
+      "context": "hella"
+    }
+  ],
+  "user": [
+      {
+        "name": "ieahtae"
+      }
+  ]
+}

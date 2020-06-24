@@ -6,5 +6,10 @@ module.exports = merge(config, {
     contentBase: 'src/public',
     historyApiFallback: true,
     port: 9000,
+    proxy: {
+      '/ajax/*': {
+        target: 'http://localhost:3002',
+      },
+    },
   },
 });

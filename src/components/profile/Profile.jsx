@@ -3,78 +3,61 @@
 import React from 'react';
 import { Col, Row, Card, Tabs, Tab } from 'react-materialize';
 
-import HouseCard from './HouseCard';
+import LeasingCard from '../LeasingCard';
 import InfoCard from './InfoCard';
-import Header from '../Header';
+import Header from '../header/Header';
+import Axios from 'axios';
 
 import './styles/profile.scss';
 
-const username = 'CSSA';
-
-const allProfileInfo = [
-  {
-    id: '2',
-    name: '邮箱',
-    icon: 'email',
-  }, {
-    id: '3',
-    name: '电话',
-    icon: 'phone',
-  }, {
-    id: '4',
-    name: '微信',
-    icon: 'chat',
-  },
-];
-
-const allHouseInfo = [
-  {
-    id: '1',
-    name: 'CV',
-    img: '/img/cv.jpg',
-  }, {
-    id: '2',
-    name: 'Towers',
-    img: '/img/cv.jpg',
-  }, {
-    id: '3',
-    name: 'La Regencia',
-    img: '/img/cv.jpg',
-  }, {
-    id: '4',
-    name: 'ajdf',
-    img: '/img/cv.jpg',
-  },
-  {
-    id: '5',
-    name: 'need database',
-    img: '/img/cv.jpg',
-  },
-];
 
 export default class Profile extends React.Component<{}> {
+  constructor (props, context) {
+      super(props, context);
+
+      this.state = {
+          profileInfo: [],
+          housesInfo: [],
+          username: [],
+      }
+  }
+
+  componentDidMount() {
+
+      Axios.get("/data/mock/get_profile_info.json").then(({ data }) => {
+        const { content, user} = data;
+
+        this.setState({profileInfo: content});
+        this.setState({username: user});
+        //console.log(profileInfo);
+      });
+
+
+      Axios.get("/data/mock/get_profile_houses_info.json").then(({data}) => {
+        const{content} = data;
+        this.setState({housesInfo: content});
+        //console.log(houseInfo);
+      });
+  }
+
   render() {
-    
-    const profiles = allProfileInfo.map(({ id, name, icon }) => (
-      <InfoCard key={id} id={id} name={name} icon={icon} />
-    ));
-    const houses = allHouseInfo.map(({ id, img, name }) => (
-      <HouseCard key={id} id={id} image={img} name={name} />
-    ));
-    
+
+    const {profileInfo} = this.state;
+    const {housesInfo} = this.state;
+    const {username} = this.state;
+
+
     return (
       <div>
         <Header />
         <div className="profile">
           <div className="container user-profile">
-            <h5 style={{ 'margin-bottom': 60 }}>
-              {' '}
-  欢迎回来,
-              <span style={{ fontSize: '40px' }}>
-                {' '}
-                {username}
-              </span>
+          {username.map((user) => (
+            <h5 style={{ marginTop: '2px', marginBottom:'30px' }}>
+              欢迎回来， {user.name}
             </h5>
+          ))} 
+
             <Row>
               <Col s={12} m={8}>
                 <Card>
@@ -84,7 +67,14 @@ export default class Profile extends React.Component<{}> {
                     </Col>
                     <Col s={12} m={7}>
                       <div className="all-profiles">
-                        {profiles}
+                        {profileInfo.map((profile) => (
+                            <InfoCard
+                                id={profile.id}
+                                name={profile.name}
+                                icon={profile.icon}
+                                context={profile.context}
+                            />
+                        ))}
                       </div>
                     </Col>
                   </Row>
@@ -109,30 +99,43 @@ export default class Profile extends React.Component<{}> {
         </div>
         <div className="user-houses">
           <div className="container">
-            <Tabs>
-              <Tab title="我的房源">
-                <div>
-                  <Col s={12}>
-                    <Row>
-                      {' '}
-                      {houses}
-                      {' '}
-                    </Row>
-                  </Col>
+            <div className="row" style={{ marginTop: '20px' }}>
+              <h5 style={{ marginTop: '60px', marginLeft:'10px' }}> 我的房源</h5>
+              {housesInfo.map((card) => (
+                <div className="col l3 s12 m4">
+                  <LeasingCard
+                    houseImage={card.image}
+                    houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
+                    houseType={card.type}
+                    houseName={card.name}
+                    rent={card.rent}
+                    startDate={card.startDate}
+                    endDate={card.endDate}
+                    houseTitle={card.title}
+                  />
                 </div>
-              </Tab>
-              <Tab title="我的收藏">
-                <div>
-                  <Col s={12}>
-                    <Row>
-                      {' '}
-                      {houses}
-                      {' '}
-                    </Row>
-                  </Col>
-                </div>
-              </Tab>
-            </Tabs>
+              ))}
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row" style={{ marginTop: '20px' }}>
+              <h5 style={{ marginTop: '60px', marginLeft:'10px' }}> 我的收藏</h5>
+              {housesInfo.map((card) => (
+                  <div className="col l3 s12 m4">
+                    <LeasingCard
+                        houseImage={card.image}
+                        houseSex={card.sex === 'female' ? '只限女生' : '只限男生'}
+                        houseType={card.type}
+                        houseName={card.name}
+                        rent={card.rent}
+                        startDate={card.startDate}
+                        endDate={card.endDate}
+                        houseTitle={card.title}
+                    />
+                  </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
