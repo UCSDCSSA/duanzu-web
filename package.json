@@ -69,6 +69,6 @@
     "react-scroll-to-component": "^1.0.2",
     "react-sticky-el": "^1.0.20",
     "recompose": "^0.30.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
